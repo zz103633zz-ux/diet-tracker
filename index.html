@@ -199,6 +199,18 @@ input.bad{border-color:var(--bad)!important;background:rgba(255,90,79,.08)}
 .fi .un{font-size:11.5px;color:var(--tx2);white-space:nowrap;text-align:right;line-height:1.3}
 .more{text-align:center;color:var(--tx3);font-size:12.5px;padding:12px 0 6px;border-top:1px solid var(--line);line-height:1.5}
 .newc{color:var(--ac2);font-weight:700}
+.fi .chk{width:24px;height:24px;border-radius:50%;border:2px solid rgba(255,255,255,.22);flex:0 0 auto;display:flex;align-items:center;justify-content:center;color:transparent}
+.fi .chk .ico{width:14px;height:14px;stroke-width:3}
+.fi.sel .chk{background:var(--ac);border-color:var(--ac);color:#fff}
+.fi.sel .nm{color:var(--ac2)}
+.stp{display:flex;align-items:center;gap:2px;flex:0 0 auto;background:var(--acd);border:1px solid rgba(242,107,42,.45);border-radius:999px;padding:2px}
+.stp button{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--ac2)}
+.stp button .ico{width:15px;height:15px;stroke-width:2.6}
+.stp b{min-width:18px;text-align:center;font-size:14px;color:var(--tx)}
+.mtype{display:flex;margin:0 0 12px}.mtype .seg{flex:1;display:flex}.mtype .seg button{flex:1;padding:9px 0}
+.mgh{display:flex;align-items:baseline;gap:8px;padding:12px 0 2px;font-size:13px;font-weight:800;color:var(--ac2);border-top:1px solid var(--line)}
+.mgh:first-child{border-top:0;padding-top:6px}.mgh span{color:var(--tx3);font-weight:600;font-size:12px}
+.mgh+.meal{border-top:0}
 .uwrap h1{font-size:26px;font-weight:800;line-height:1.3;margin:0 2px 8px}
 </style>
 </head>
@@ -370,7 +382,11 @@ function parseNum(v){if(typeof v==='number')return v;if(v==null)return NaN;let s
 const num=(v,d=0)=>{const n=parseNum(v);return isFinite(n)?n:d};
 const rnd=a=>a[Math.floor(Math.random()*a.length)];
 let toastT;function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('on'),2600)}
-function mealLabel(h,m){const t=h*60+m;return t<630?'早餐':t<840?'午餐':t<1020?'點心':t<1260?'晚餐':'宵夜'}
+const MTYPES=['早餐','午餐','晚餐','點心'];
+// default meal type by time: <10:30 早餐, 10:30–14:00 午餐, 14:00–17:00 點心, ≥17:00 晚餐
+function mealLabel(h,m){const t=h*60+m;return t<630?'早餐':t<840?'午餐':t<1020?'點心':'晚餐'}
+const defMealType=()=>{const d=new Date();return mealLabel(d.getHours(),d.getMinutes())};
+let mealType=null;const curMealType=()=>mealType||defMealType();
 
 /* ---------- calculations ---------- */
 function weightsSorted(){return S.weights.slice().sort((a,b)=>a.date<b.date?-1:a.date>b.date?1:0)}
@@ -466,7 +482,7 @@ R.home=function(){
   <div class="mut3 small" style="margin:0 2px 8px">這個月 · ${st.cur} 天 Combo · 最長 ${st.best} 天</div>
   <div class="card"><div class="dots">${dots}</div><div class="legend"><span><i class="dot t"></i>今天</span><span><i class="dot l"></i>有記錄</span><span><i class="dot"></i>沒記錄</span></div></div>
   <div class="sech" style="margin-top:14px"><h3>今天吃了</h3><span class="r num">今日累積消費 $${fmt(E.price)}</span></div>
-  <div class="card" style="padding:6px 16px">${meals.length?meals.map(mealRow).join(''):'<div class="empty">還沒有紀錄</div>'}</div>
+  <div class="card" style="padding:6px 16px">${meals.length?mealGroups(meals):'<div class="empty">還沒有紀錄</div>'}</div>
   <div class="foot">營養數值為估算，實際依店家與份量而異<br>資料只存在這台裝置（可在設定匯出備份）</div>`;
   $('#b-user').onclick=userSheet;
   $('#b-ate').onclick=()=>go('log');$('#b-rec').onclick=()=>go('rec');$('#b-plus').onclick=openQuick;
@@ -474,6 +490,9 @@ R.home=function(){
   $('#water').onclick=e=>{if(e.target.closest('#w-minus')){addW(-1);return}addW(1)};
   bindMealDel($('#s-home'),R.home);
 };
+function mealGroups(meals){const ord=l=>{const i=MTYPES.indexOf(l);return i<0?(l?4:5):i};const g=new Map();
+  meals.slice().sort((a,b)=>ord(a.label)-ord(b.label)||(a.time<b.time?-1:1)).forEach(m=>{const k=m.label||'其他';if(!g.has(k))g.set(k,[]);g.get(k).push(m)});
+  return [...g].map(([k,ms])=>`<div class="mgh" data-mg="${esc(k)}">${esc(k)}<span class="num">${fmt(ms.reduce((a,m)=>a+num(m.kcal),0))} kcal · ${ms.length} 筆</span></div>`+ms.map(mealRow).join('')).join('')}
 function mealRow(m){const nm=(m.items||[]).map(x=>x.name+((x.q||1)!==1?' ×'+x.q:'')).join('、');const st=[...new Set((m.items||[]).map(x=>x.store).filter(Boolean))].join('/');
   return `<div class="meal"><span class="tag">${esc(m.label||'')}</span><div class="sp"><div class="nm">${esc(nm)}</div><div class="sb num">${esc(m.time)}${st?' · '+esc(st):''} · ${fmt(num(m.kcal))} kcal · P${Math.round(num(m.p))} C${Math.round(num(m.c))} F${Math.round(num(m.f))} · $${fmt(num(m.price))}</div></div><button class="ibtn" data-del="${esc(m.id)}" aria-label="刪除" style="width:36px;height:36px;color:var(--tx3)">${I.trash}</button></div>`}
 function bindMealDel(root,re){root.querySelectorAll('[data-del]').forEach(b=>b.onclick=e=>{e.stopPropagation();const m=S.meals.find(x=>x.id===b.dataset.del);if(!m)return;if(!confirm('刪除這一餐？\n'+(m.items||[]).map(x=>x.name).join('、')))return;S.meals=S.meals.filter(x=>x.id!==m.id);save();toast('已刪除');re()})}
@@ -483,7 +502,7 @@ let tray=[];// {f,q}
 const pick={q:'',store:'全部'};
 function storeChips(sel,attr,picker){return ['全部',...(picker?['我的']:[]),...STORES,...(picker?[CPST,DBST]:(S.custom.length?['我的']:[]))].map(s=>`<button class="chip${sel===s?' on':''}" ${attr}="${esc(s)}">${esc(s)}</button>`).join('')}
 function pickerHTML(){
-  return `<div class="search">${I.search}<input type="search" placeholder="搜尋食物，例如 雞胸、蛋餅、便當" value="${esc(pick.q)}" data-q enterkeyhint="search"></div><div class="chips">${storeChips(pick.store,'data-st',true)}</div><div class="card fl" data-list></div><div class="foot">組合：「配料組合」裡有吐司、蛋、起司、薯餅…，點多個配料就能組成一餐，重複點加份數；「g」可改克數<br>營養數值為估算 · 找不到？到「我的」新增，或回首頁按「+」</div><div style="height:130px"></div>`}
+  return `<div class="search">${I.search}<input type="search" placeholder="搜尋食物，例如 雞胸、蛋餅、便當" value="${esc(pick.q)}" data-q enterkeyhint="search"></div><div class="chips">${storeChips(pick.store,'data-st',true)}</div><div class="card fl" data-list></div><div class="foot">組合：「配料組合」裡有吐司、蛋、起司、薯餅…，點多個配料就能組成一餐，重複點加份數；「g」可改克數<br>營養數值為估算 · 找不到？到「我的」新增，或回首頁按「+」</div><div style="height:180px"></div>`}
 function renderList(root){
   if(!root)return;const m=makeMatcher(pick.q);const LIM=200;
   let list=allFoods().filter(f=>(pick.store==='全部'?(m||f.store!==DBST):f.store===pick.store)&&(!m||m(f)));
@@ -496,16 +515,20 @@ function renderList(root){
   const n=list.length;list=list.slice(0,LIM);
   el.innerHTML=addMine+list.map(f=>{const t=tray.find(x=>x.f.id===f.id);const gf=f.k100!=null;
     const sb=gf?`${esc(f.store===DBST?f.tc:'配料')} · ${esc(f.unit)} ${f.kcal} kcal · P${f.p} C${f.c} F${f.f}${f.raw?' · 生重':''}`:`${esc(f.store)}${f.shop?' · '+esc(f.shop):''} · ${f.kcal} kcal · P${f.p} C${f.c} F${f.f}`;
-    return `<div class="fi" data-add="${esc(f.id)}"><div class="sp"><div class="nm">${esc(f.name)}</div><div class="sb num">${sb}</div></div>${gf?`<button class="gbtn" data-g="${esc(f.id)}" aria-label="改克數">g</button>`:`<div class="pr num">$${f.price}</div>`}<button class="addb" aria-label="加入">${I.plus}${t?`<span class="q">${t.q}</span>`:''}</button></div>`}).join('')
+    return `<div class="fi${t?' sel':''}" data-add="${esc(f.id)}" role="checkbox" aria-checked="${t?'true':'false'}"><span class="chk">${I.check}</span><div class="sp"><div class="nm">${esc(f.name)}</div><div class="sb num">${sb}</div></div>${gf?`<button class="gbtn" data-g="${esc(f.id)}" aria-label="改克數">g</button>`:`<div class="pr num">$${f.price}</div>`}${t?`<div class="stp"><button data-dec="${esc(f.id)}" aria-label="減少份數">${I.minus}</button><b class="num" data-qty>${t.q}</b><button data-inc="${esc(f.id)}" aria-label="增加份數">${I.plus}</button></div>`:`<span class="addb" aria-hidden="true">${I.plus}</span>`}</div>`}).join('')
     +(n>LIM?`<div class="more">還有 ${n-LIM} 項，輸入更多關鍵字縮小範圍</div>`:'')+(pick.store==='全部'&&!m?`<div class="more">食材資料庫有 ${TDBF.length} 項（每100g），請搜尋或點「${DBST}」</div>`:'');
 }
 function bindPicker(root){
   const inp=root.querySelector('[data-q]');inp.oninput=()=>{pick.q=inp.value;renderList(root)};
   root.querySelectorAll('[data-st]').forEach(b=>b.onclick=()=>{pick.store=b.dataset.st;root.querySelectorAll('[data-st]').forEach(x=>x.classList.toggle('on',x===b));renderList(root)});
   const addF=f=>{const t=tray.find(x=>x.f.id===f.id);if(t)t.q++;else tray.push({f,q:1});renderList(root);updTray()};
+  const step=(id,d)=>{const t=tray.find(x=>x.f.id===id);if(!t)return;t.q+=d;if(t.q<=0)tray=tray.filter(x=>x!==t);renderList(root);updTray()};
   root.querySelector('[data-list]').onclick=e=>{if(e.target.closest('[data-newcustom]')){openFoodForm('custom');return}
     const gb=e.target.closest('[data-g]');if(gb){const f=allFoods().find(x=>x.id===gb.dataset.g);if(f)gramSheet(f,g=>addF(serving(f,g)));return}
-    const r=e.target.closest('[data-add]');if(!r)return;const f=allFoods().find(x=>x.id===r.dataset.add);if(!f)return;addF(serving(f))};
+    const inc=e.target.closest('[data-inc]'),dec=e.target.closest('[data-dec]');if(inc){step(inc.dataset.inc,1);return}if(dec){step(dec.dataset.dec,-1);return}
+    // tap row = toggle selected (multi-select; selection lives in the tray, so it survives search / store changes)
+    const r=e.target.closest('[data-add]');if(!r)return;const id=r.dataset.add;if(tray.some(x=>x.f.id===id)){tray=tray.filter(x=>x.f.id!==id);renderList(root);updTray();return}
+    const f=allFoods().find(x=>x.id===id);if(!f)return;addF(serving(f))};
   renderList(root);
 }
 function updTray(){
@@ -513,12 +536,18 @@ function updTray(){
   el.classList.toggle('on',show);el.classList.toggle('up',cur==='rec');if(!show){el.innerHTML='';return}
   const t=sumItems(tray.map(x=>Object.assign({},x.f,{q:x.q})));
   el.innerHTML=`<div class="row" style="margin-bottom:10px"><div class="sp"><div class="b small">這一餐 · ${tray.reduce((a,x)=>a+x.q,0)} 樣</div><div class="xs mut" style="margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(tray.map(x=>x.f.name+(x.q>1?'×'+x.q:'')).join('、'))}</div></div><div style="text-align:right"><div class="bb num" style="font-size:20px">${fmt(t.kcal)} <span class="xs mut">kcal</span></div><div class="xs mut num">P${Math.round(t.p)} · $${fmt(t.price)}</div></div></div>
-  <div class="row"><button class="btn sec sm" id="tr-clr">清空</button><button class="btn" id="tr-ok" style="height:44px;font-size:15px">${I.check}確認這一餐</button></div>`;
+  ${cur==='log'?`<div class="row"><button class="btn sec sm" id="tr-clr">清除</button><button class="btn" id="tr-add" style="height:46px;font-size:15px;padding:0 10px">${I.check}<span class="num">加入 ${tray.length} 樣到${esc(curMealType())}（${fmt(t.kcal)} kcal）</span></button></div>
+   <button id="tr-ok" class="tiny" style="display:block;margin:8px auto 0;color:var(--tx2);text-decoration:underline">先看明細再確認</button>`
+  :`<div class="row"><button class="btn sec sm" id="tr-clr">清空</button><button class="btn" id="tr-ok" style="height:44px;font-size:15px">${I.check}確認這一餐</button></div>`}`;
   $('#tr-clr').onclick=()=>{tray=[];updTray();refreshPickers()};
-  $('#tr-ok').onclick=()=>openConfirm(tray.map(x=>({f:x.f,q:x.q})),true);
+  $('#tr-ok').onclick=()=>openConfirm(tray.map(x=>({f:x.f,q:x.q})),true,cur==='log'?curMealType():null);
+  if($('#tr-add'))$('#tr-add').onclick=()=>{const it=tray.map(x=>Object.assign({},x.f,{q:x.q}));tray=[];logMeal(it,curMealType())};
 }
 function refreshPickers(){document.querySelectorAll('.screen.on .pickroot').forEach(renderList)}
-R.log=function(){pick.q="";$('#s-log').innerHTML=topbar()+`<h2 class="pt">我吃完了，吃了什麼？</h2><div class="mut small" style="margin:-6px 2px 12px">點食物加入這一餐，可重複點增加份數</div><div class="pickroot">${pickerHTML()}</div>`;bindPicker($('#s-log .pickroot'))};
+R.log=function(){pick.q="";mealType=null;const mt=curMealType();
+  $('#s-log').innerHTML=topbar()+`<h2 class="pt">我吃完了，吃了什麼？</h2><div class="mtype"><div class="seg" id="mt">${MTYPES.map(x=>`<button data-mt="${x}" class="${x===mt?'on':''}">${x}</button>`).join('')}</div></div><div class="mut small" style="margin:-4px 2px 12px">可以一次勾選多樣（搜尋、換店家都會保留），用 − ＋ 調份數，最後按下方「加入」</div><div class="pickroot">${pickerHTML()}</div>`;
+  $('#s-log').querySelectorAll('[data-mt]').forEach(b=>b.onclick=()=>{mealType=b.dataset.mt;$('#s-log').querySelectorAll('[data-mt]').forEach(x=>x.classList.toggle('on',x===b));updTray()});
+  bindPicker($('#s-log .pickroot'))};
 
 function gramSheet(f,cb){
   openSheet(`<div class="row" style="margin-bottom:10px"><b style="font-size:17px">${esc(f.name)}</b><div class="sp"></div><button class="ibtn" id="gs-x" style="width:36px;height:36px" aria-label="關閉">${I.x}</button></div>
@@ -594,7 +623,7 @@ function renderCombos(){
 }
 
 /* ---------- CONFIRM SHEET ---------- */
-let pending=[],pendingFromTray=false;
+let pending=[],pendingFromTray=false,pendingLabel=null;
 function openSheet(html,bottom){const s=$('#sheet');delete s.dataset.form;s.className='sheet'+(bottom?' bot':'');s.style.bottom='';s.style.maxHeight='';s.innerHTML=html;$('#mask').classList.add('on');s.offsetHeight;s.classList.add('on');fitSheet()}
 function closeSheet(){const s=$('#sheet');s.classList.remove('on','kb');s.style.bottom='';s.style.maxHeight='';$('#mask').classList.remove('on')}
 // iOS: the on-screen keyboard does not shrink the layout viewport, so a bottom sheet (and its save button) ends up behind it.
@@ -603,14 +632,14 @@ function fitSheet(){const s=$('#sheet'),vv=window.visualViewport;if(!vv||!s.clas
   const off=Math.max(0,Math.round(window.innerHeight-(vv.offsetTop+vv.height)));s.classList.toggle('kb',off>60);s.style.bottom=off>0?off+'px':'';s.style.maxHeight=Math.round(vv.height*(off>60?.98:.92))+'px'}
 if(window.visualViewport){visualViewport.addEventListener('resize',fitSheet);visualViewport.addEventListener('scroll',fitSheet)}
 document.addEventListener('focusin',e=>{const s=$('#sheet');if(s.classList.contains('on')&&s.contains(e.target)&&e.target.matches('input,textarea,select'))setTimeout(()=>{fitSheet();try{e.target.scrollIntoView({block:'center'})}catch(_){}},300)});
-function openConfirm(items,fromTray){pending=items;pendingFromTray=fromTray;renderConfirm()}
+function openConfirm(items,fromTray,label){pending=items;pendingFromTray=fromTray;pendingLabel=label||null;renderConfirm()}
 function renderConfirm(){
   if(!pending.length){closeSheet();return}
   const T=macroT(),E=dayTot(dk());const m=sumItems(pending.map(x=>Object.assign({},x.f,{q:x.q})));
   const after={kcal:E.kcal+m.kcal,p:E.p+m.p,c:E.c+m.c,f:E.f+m.f};const left=Math.round(T.kcal-after.kcal);
   const stores=[...new Set(pending.map(x=>x.f.store).filter(Boolean))].join(' / ');
   const s=$('#sheet');const wasOpen=s.classList.contains('on');
-  const html=`<div class="row"><div class="mut small">這一餐 · ${esc(stores)}</div><div class="sp"></div><div class="num" style="white-space:nowrap"><b style="font-size:26px">${fmt(m.kcal)}</b> <span class="small mut">kcal · $${fmt(m.price)}</span></div></div>
+  const html=`<div class="row"><div class="mut small"><span class="tag">${esc(pendingLabel||defMealType())}</span> ${esc(stores)}</div><div class="sp"></div><div class="num" style="white-space:nowrap"><b style="font-size:26px">${fmt(m.kcal)}</b> <span class="small mut">kcal · $${fmt(m.price)}</span></div></div>
   <div class="row" style="margin-top:12px;justify-content:space-between">
    ${ring(after.kcal,T.kcal,96,7,`<b class="num" style="font-size:20px">${fmt(after.kcal)}</b><span class="xs mut num">/ ${fmt(T.kcal)}</span>`,'熱量')}
    <div class="ringrow" style="gap:6px">${ring(after.p,T.p,62,5,`<b class="num" style="font-size:12.5px">${Math.round(after.p)}g</b>`,'蛋白質')}${ring(after.c,T.c,62,5,`<b class="num" style="font-size:12.5px">${Math.round(after.c)}g</b>`,'碳水')}${ring(after.f,T.f,62,5,`<b class="num" style="font-size:12.5px">${Math.round(after.f)}g</b>`,'脂肪')}</div></div>
@@ -621,15 +650,15 @@ function renderConfirm(){
   if(wasOpen&&!s.classList.contains('bot'))s.innerHTML=html;else openSheet(html,false);
   s.querySelectorAll('[data-rm]').forEach(b=>b.onclick=()=>{pending.splice(+b.dataset.rm,1);if(pendingFromTray){tray=pending.map(x=>({f:x.f,q:x.q}));updTray();refreshPickers()}renderConfirm()});
   $('#cf-no').onclick=closeSheet;
-  $('#cf-ok').onclick=()=>{const it=pending.map(x=>Object.assign({},x.f,{q:x.q}));if(pendingFromTray)tray=[];pending=[];logMeal(it)};
+  $('#cf-ok').onclick=()=>{const it=pending.map(x=>Object.assign({},x.f,{q:x.q}));if(pendingFromTray)tray=[];pending=[];logMeal(it,pendingLabel)};
 }
 
 /* ---------- LOG + 已更新 ---------- */
-function logMeal(items){
+function logMeal(items,label){
   const now=new Date(),today=dk(now);const before=streakInfo();const nToday=dayMeals(today).length;
   const clean=items.map(x=>({name:String(x.name),store:x.store||'',kcal:num(x.kcal),p:num(x.p),c:num(x.c),f:num(x.f),price:num(x.price),q:num(x.q,1)}));
   const t=sumItems(clean);
-  S.meals.push({id:uid(),date:today,time:pad(now.getHours())+':'+pad(now.getMinutes()),label:mealLabel(now.getHours(),now.getMinutes()),items:clean,kcal:Math.round(t.kcal),p:r1(t.p),c:r1(t.c),f:r1(t.f),price:Math.round(t.price)});
+  S.meals.push({id:uid(),date:today,time:pad(now.getHours())+':'+pad(now.getMinutes()),label:MTYPES.includes(label)?label:mealLabel(now.getHours(),now.getMinutes()),items:clean,kcal:Math.round(t.kcal),p:r1(t.p),c:r1(t.c),f:r1(t.f),price:Math.round(t.price)});
   save();
   let msg;
   if(!before.ds.length)msg='第一筆紀錄完成！Combo 從今天開始算。';
@@ -642,7 +671,7 @@ R.done=function(msg){
   const today=dk(),T=macroT(),E=dayTot(today),st=streakInfo();
   let seg='';for(let i=13;i>=0;i--){const k=addDays(today,-i);seg+=`<i class="${k===today?'t':st.set.has(k)?'l':''}"></i>`}
   const sub=st.cur===1?(st.best>1?`新的一輪從今天開始，你的最長紀錄 ${st.best} 天`:'新的一輪從今天開始'):`已經連續 ${st.cur} 天，最長紀錄 ${st.best} 天`;
-  $('#s-done').innerHTML=`<div class="okc"><div class="h"><span class="ck">${I.check}</span>已更新</div><p><span class="ac">${I.fork}</span> ${esc(msg||'')}</p></div>
+  $('#s-done').innerHTML=`<div class="okc"><div class="h"><span class="ck">${I.check}</span>已更新${(()=>{const l=S.meals.length?S.meals[S.meals.length-1].label:'';return l?` <span class="tag">${esc(l)}</span>`:''})()}</div><p><span class="ac">${I.fork}</span> ${esc(msg||'')}</p></div>
   <div class="card" style="text-align:center;padding-top:22px">
    ${ring(E.kcal,T.kcal,150,13,`<b class="num" style="font-size:36px">${fmt(E.kcal)}</b><span class="xs mut num">大卡 / ${fmt(T.kcal)}</span>`,'熱量')}
    <div class="ringrow" style="margin-top:14px">${ring(E.p,T.p,74,7,`<b class="num" style="font-size:13px">${Math.round(E.p)}g</b>`,'蛋白質')}${ring(E.c,T.c,74,7,`<b class="num" style="font-size:13px">${Math.round(E.c)}g</b>`,'碳水')}${ring(E.f,T.f,74,7,`<b class="num" style="font-size:13px">${Math.round(E.f)}g</b>`,'脂肪')}</div>
@@ -738,7 +767,7 @@ R.hist=function(){
   <div class="card"><div class="dnav"><button class="ibtn" id="hd-p" aria-label="前一天" style="width:36px;height:36px">${I.back}</button><div class="d">${md(histDay)}${histDay===today?' · 今天':''}</div><button class="ibtn" id="hd-n" aria-label="後一天" style="width:36px;height:36px;${histDay>=today?'opacity:.3':''}">${I.next}</button></div>
    <div class="row num" style="justify-content:space-around;margin:12px 0 4px;font-size:13px;text-align:center"><div><b style="font-size:18px">${fmt(dt.kcal)}</b><div class="mut xs">kcal</div></div><div><b style="font-size:18px">${Math.round(dt.p)}</b><div class="mut xs">蛋白 g</div></div><div><b style="font-size:18px">${Math.round(dt.c)}</b><div class="mut xs">碳水 g</div></div><div><b style="font-size:18px">${Math.round(dt.f)}</b><div class="mut xs">脂肪 g</div></div><div><b style="font-size:18px">$${fmt(dt.price)}</b><div class="mut xs">消費</div></div></div>
    <div class="tiny" style="text-align:center">喝水 ${num(S.water[histDay],0)} 杯</div><div class="hr"></div>
-   <div>${dm.length?dm.map(mealRow).join(''):'<div class="empty">這天沒有紀錄</div>'}</div></div>
+   <div>${dm.length?mealGroups(dm):'<div class="empty">這天沒有紀錄</div>'}</div></div>
   <div class="card" id="wcard"><div class="row"><b>體重</b><div class="sp"></div><span class="small mut num">目前 ${curWeight().toFixed(1)} kg · 目標 ${num(S.profile.goal).toFixed(1)} kg</span></div>
    <div class="row" style="margin:12px 0"><input type="date" id="w-d" value="${today}" max="${today}" style="flex:1.3;min-width:0"><input type="text" inputmode="decimal" autocomplete="off" step="0.1" id="w-k" placeholder="kg" style="flex:1;min-width:0"><button class="btn sm" id="w-add">記錄</button></div>
    ${wchart}<div style="margin-top:6px">${wlist}</div></div>
