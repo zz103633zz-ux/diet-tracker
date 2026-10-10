@@ -9,24 +9,25 @@
 <meta name="apple-mobile-web-app-title" content="吃多少">
 <meta name="theme-color" content="#131110">
 <meta name="format-detection" content="telephone=no">
-<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAFAklEQVR42u3dO1LcUBCF4eGWqkiNcUQ58RqcsxAW6IitsAYSyhGPLTigTEExDIN0u/t0939C2wGSPp2+emCdnJ992xGyL4NdQMBBwEHAQcBBwEHAQcBBwEHAQcBBCDgIOAg4CDgIOAg4CDgIOAg4CDgIAQcBBwEHAQcBBwEHAQcBB6mWpe2W//55/v4Pry9P9/7jX3/+gqMXheNze3XRkMsCiO1cqkJZMDERSjElCyymKylDZMEERVIThxqLYkWywAIiH2Ugw3nW0BywqFAhAxlUSO7mqMEiXYUMZFAhWXFUlZHCxwILRkyy5mgiQ7xCTgS/muAm4+buQerIqfWHHA5TGUdqCLQi5UMLh5GMKSbclOj4EMIxXYaRCQclIj5UcMyVMZHF/ePTR3/14/uZHREFHxI4JsqY2xYHZLzHMZ1IuI86b4K5DZEDMl6OaMZnsO8zatSGhYzDteFw0ocLCx4r22XYFcbxqw3TAxw4XAYyptfG3EMb2B+Jfx1SX4bafYs0Y2VLbVivPVdcpFh3QIiwgQzT2ph1gEOGS7KxkldGxhETgGN1bTjfyZg7U7b78C+PkUWGQ6xrY3ucfaQZKzVqI9dwccWhPFCcayPFcEnQHPVkZOkPPxzZXwudNVMSrTzUm6NqbaQoj4GM2G1U9uGEg5mScbLoNkeH2hAvDw8c1EbS8hBtjj61oVweTf97a/075S1wrJgpCnfK/WfKivKwniwdm4PaAAcyyuHoOVM0l6W2ONQuYuvVhumyg4/xqNQGYyVypqSoDanJ0qU5WIeCg5kyMy0+47WiNrY3TQFehs0hcqkSMlA8ZdhdsAiNFak7HKxJ6685ytcGOFjJgoPLV3AwUMDBQAEHtcFYQUa32mCsIKMTDgYKOKgNcMjXRu2HtwMZyEiAo9t33T6Kzn+qb4jD8ylr59qwe4pb5GWf7YfqS7yavCfG1QoBB7WRHYf+mtRahtQnnmgOEoSj2GuhggPF9IVTuebwnyxHLjgcZKh9NlDoUvb68vT/2UCjg+OtCQaKWjw+47V3Uhw24fm7G5+OFR8ZK2aK9V5amlcF739I4PiSidurC5Ff/JKtjSI4bu4ekn6+W3mp4XDy6N4Eq/E5+NRbOsown77gaF4bO/Hb54GnlJsM5YJUf7ZSe7iIb50fjkTf2xW/5eW2JwenFwNFAofU9zJjb3+t3iLPAk7zPofPedb5llc8DuWVh/7TNee9NxJtoekJp7/U8D+vkr0mOMtH1IIj15V5DI4tJ4HF/tVfaoSMY4/3OYwO85b99bo59N//i1qoJX77PEtF573JG4lj+wmxbr971sZ2GYHXd5FjZeKJ9aU9+ILDVIb/dhUcK1O2X626C8jYVfqkxvPxOH6HGtVGpcfI8WPFYp8eIPI8UyxkuG1COxwW59ze/WuBw+cnb43DrpNf7+v7x6dZMhx+WnD4zWz9xa/Ug0k5HJ5ruiOPhNrP0xrHrtPvJcjK2MnePk/0wmnh7RVtjj4VonwaDPYdW5cVR2Ef+tulPlZKjpgs3Af7lK2o0BzZKyQd7sFe5mcu1Ry5KiTvNMyNQ5xI9kVSBRxqSspce5fCEU6k2C2Zgjj8lVS9TVcZhymUDo8Gu+DYyKXbU+LuOMin4WM8BBwEHAQcBBwEHAQcBBwEHAQcBByEgIOAg4CDgIOAg4CDgIOAg4CDgIMQcBBwEHAQcBBwEHAQcJCs+QdqlhVr5gAx/QAAAABJRU5ErkJggg==">
-<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAFAklEQVR42u3dO1LcUBCF4eGWqkiNcUQ58RqcsxAW6IitsAYSyhGPLTigTEExDIN0u/t0939C2wGSPp2+emCdnJ992xGyL4NdQMBBwEHAQcBBwEHAQcBBwEHAQcBBCDgIOAg4CDgIOAg4CDgIOAg4CDgIAQcBBwEHAQcBBwEHAQcBB6mWpe2W//55/v4Pry9P9/7jX3/+gqMXheNze3XRkMsCiO1cqkJZMDERSjElCyymKylDZMEERVIThxqLYkWywAIiH2Ugw3nW0BywqFAhAxlUSO7mqMEiXYUMZFAhWXFUlZHCxwILRkyy5mgiQ7xCTgS/muAm4+buQerIqfWHHA5TGUdqCLQi5UMLh5GMKSbclOj4EMIxXYaRCQclIj5UcMyVMZHF/ePTR3/14/uZHREFHxI4JsqY2xYHZLzHMZ1IuI86b4K5DZEDMl6OaMZnsO8zatSGhYzDteFw0ocLCx4r22XYFcbxqw3TAxw4XAYyptfG3EMb2B+Jfx1SX4bafYs0Y2VLbVivPVdcpFh3QIiwgQzT2ph1gEOGS7KxkldGxhETgGN1bTjfyZg7U7b78C+PkUWGQ6xrY3ucfaQZKzVqI9dwccWhPFCcayPFcEnQHPVkZOkPPxzZXwudNVMSrTzUm6NqbaQoj4GM2G1U9uGEg5mScbLoNkeH2hAvDw8c1EbS8hBtjj61oVweTf97a/075S1wrJgpCnfK/WfKivKwniwdm4PaAAcyyuHoOVM0l6W2ONQuYuvVhumyg4/xqNQGYyVypqSoDanJ0qU5WIeCg5kyMy0+47WiNrY3TQFehs0hcqkSMlA8ZdhdsAiNFak7HKxJ6685ytcGOFjJgoPLV3AwUMDBQAEHtcFYQUa32mCsIKMTDgYKOKgNcMjXRu2HtwMZyEiAo9t33T6Kzn+qb4jD8ylr59qwe4pb5GWf7YfqS7yavCfG1QoBB7WRHYf+mtRahtQnnmgOEoSj2GuhggPF9IVTuebwnyxHLjgcZKh9NlDoUvb68vT/2UCjg+OtCQaKWjw+47V3Uhw24fm7G5+OFR8ZK2aK9V5amlcF739I4PiSidurC5Ff/JKtjSI4bu4ekn6+W3mp4XDy6N4Eq/E5+NRbOsown77gaF4bO/Hb54GnlJsM5YJUf7ZSe7iIb50fjkTf2xW/5eW2JwenFwNFAofU9zJjb3+t3iLPAk7zPofPedb5llc8DuWVh/7TNee9NxJtoekJp7/U8D+vkr0mOMtH1IIj15V5DI4tJ4HF/tVfaoSMY4/3OYwO85b99bo59N//i1qoJX77PEtF573JG4lj+wmxbr971sZ2GYHXd5FjZeKJ9aU9+ILDVIb/dhUcK1O2X626C8jYVfqkxvPxOH6HGtVGpcfI8WPFYp8eIPI8UyxkuG1COxwW59ze/WuBw+cnb43DrpNf7+v7x6dZMhx+WnD4zWz9xa/Ug0k5HJ5ruiOPhNrP0xrHrtPvJcjK2MnePk/0wmnh7RVtjj4VonwaDPYdW5cVR2Ef+tulPlZKjpgs3Af7lK2o0BzZKyQd7sFe5mcu1Ry5KiTvNMyNQ5xI9kVSBRxqSspce5fCEU6k2C2Zgjj8lVS9TVcZhymUDo8Gu+DYyKXbU+LuOMin4WM8BBwEHAQcBBwEHAQcBBwEHAQcBByEgIOAg4CDgIOAg4CDgIOAg4CDgIMQcBBwEHAQcBBwEHAQcJCs+QdqlhVr5gAx/QAAAABJRU5ErkJggg==">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAAE/klEQVR42u3dPVIUQRyGcRjIZcHMK5h4Ae7B+Qg8DglXIKOW4gQYoCUi4Lo7M/3/+D2ZpVax3c+8+3ZPz3B8sTl7OgKKMBkCEBogNEBogNAgNEBogNAAoQFCg9AAoQFCA4QGCA1CA4QGCA0QGiA0CA0QGiA0QGiA0CA0QGiA0AChgd+cGoL5+PT1y7t/d3J9+eH/3X77bgAJHU/cfTm/uSI6ofMKvK/oBCd0Ool3FZzchE4r8kdyE5vQaSWW2oQuK7LUJnRZkYn9zETmHmJLaCJLawlNZmktoYksrSU0maV1G6HJ3FfqUyKTulIFmciMSml9fLE5eyLzfDze3qWWKXtSpxd6pMz7yJtB8sxSpxZ6hMxLShxJ7qxSpxV6TZlHSBxB7oxSpxR6LZnXEPl++/DPf/P5fDNM7GxSpxN6DZnXSuRdZH5P6DXFziS1A/5Bq8UuMr+UrdupuvdItQ+9ZDqvLfOu6RwhRTNdLGkqx1Iyj0rlfbvzSAEzVI+JzDFljihehqRu+yqwqjJn3Z1oUznmTufRC785djZGJ2vki2Uic710XlrAyNWjTeXoKnO3ChJW6DnTOeL+8lp1Yympo6b0VF3mCIxO56WIKHX5yiGde1WPcEJXqxoR07ly9Sib0GTumdShhO7+XODSdaNDly6Z0NK5b0pPZO4pc1WpwwitbmxS//xRakephJbOUjqE0NJ5U+JzREjpMgktnaV0yUUhmXszXOg56ka229tR68YcKT26dkho6SyhQWZCF14MVqgbVRaHQ4XOvl0nneP1aJVDOqsc6kbtdM5cOyQ0mSU01I2oePvogHReKuFdKAMTOuMOR+SqEU3mUTsdaStH5v1nC0NCS2dVg9AWmIRGsnQGoVUNQoPMhJbOIDSZpTOhVQ0QWtUgNKQzoaUzmQlNZjL3Err768OWJtPv9w4hdLTTctJ5Xkad1nPAf2FxDrlQVA0dGoRGxBojnRsKXXVhOFrmrAtCCQ0JPSeeC6xZNUY+j5g+oaPWjn36cwSZM9eNo6PE23Yn15e//1D891ejqNB/SKxq4A2OLzZnT5Frw64SR3uPxP9Ujigyz1E3Rs9D2ITOnMbOUxP6YInPb65Svu2nUjoT+iePt3dlBrRzb44QKKVurHS8KIxbUKGr/CbTXfuzdJbQZdImkszVvtVKnuVQPfqOUyihtw3u+FW8gRJp3sqetouYPqpGQ6HnvNrXnrQsN1TmHJdo36rlz0NHSSI3UBoLXa1LVz14FHGepg6DNTKVqvbmqKHT5hGspaWO3p+7bGWGFnruFFh7Uqv25siVMMR56BEizj0prxO66uNU0dc3bZ/6rv4V3PVuaQqhl0qFuSY9WjovJXOG3acUlWON1Dlksl4KPVLmqOMjoQcMavavaDI/4+2jb0ix7wSOSGcnCxNXjrUncRexf9WNtWWONAaETpZMH03q2kJH+dyELvJ1+3qS77cPi8sc4XMSukGHrLpIzXw4LL3Q0RZG+8iQ/ecntNV+SCoc251MBiqNX5mEltaCoFRCS2vjVFZoUvcdn5KVQwXpe6FPJpHMElpaE1lCm1yfV0JLayITurPY3dcLhC4gt0UvoUuITWRCp5ebxIROLTiBCZ1SdOISGviLyRCA0AChAUIDhAahAUIDhAYIDRAahAYIDRAaIDRAaBAaIDRAaIDQAKFBaIDQAKEBQgOEBqEBQgOEBg7kB60NMaaVAPTaAAAAAElFTkSuQmCC">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAAE/klEQVR42u3dPVIUQRyGcRjIZcHMK5h4Ae7B+Qg8DglXIKOW4gQYoCUi4Lo7M/3/+D2ZpVax3c+8+3ZPz3B8sTl7OgKKMBkCEBogNEBogNAgNEBogNAAoQFCg9AAoQFCA4QGCA1CA4QGCA0QGiA0CA0QGiA0QGiA0CA0QGiA0AChgd+cGoL5+PT1y7t/d3J9+eH/3X77bgAJHU/cfTm/uSI6ofMKvK/oBCd0Ool3FZzchE4r8kdyE5vQaSWW2oQuK7LUJnRZkYn9zETmHmJLaCJLawlNZmktoYksrSU0maV1G6HJ3FfqUyKTulIFmciMSml9fLE5eyLzfDze3qWWKXtSpxd6pMz7yJtB8sxSpxZ6hMxLShxJ7qxSpxV6TZlHSBxB7oxSpxR6LZnXEPl++/DPf/P5fDNM7GxSpxN6DZnXSuRdZH5P6DXFziS1A/5Bq8UuMr+UrdupuvdItQ+9ZDqvLfOu6RwhRTNdLGkqx1Iyj0rlfbvzSAEzVI+JzDFljihehqRu+yqwqjJn3Z1oUznmTufRC785djZGJ2vki2Uic710XlrAyNWjTeXoKnO3ChJW6DnTOeL+8lp1Yympo6b0VF3mCIxO56WIKHX5yiGde1WPcEJXqxoR07ly9Sib0GTumdShhO7+XODSdaNDly6Z0NK5b0pPZO4pc1WpwwitbmxS//xRakephJbOUjqE0NJ5U+JzREjpMgktnaV0yUUhmXszXOg56ka229tR68YcKT26dkho6SyhQWZCF14MVqgbVRaHQ4XOvl0nneP1aJVDOqsc6kbtdM5cOyQ0mSU01I2oePvogHReKuFdKAMTOuMOR+SqEU3mUTsdaStH5v1nC0NCS2dVg9AWmIRGsnQGoVUNQoPMhJbOIDSZpTOhVQ0QWtUgNKQzoaUzmQlNZjL3Err768OWJtPv9w4hdLTTctJ5Xkad1nPAf2FxDrlQVA0dGoRGxBojnRsKXXVhOFrmrAtCCQ0JPSeeC6xZNUY+j5g+oaPWjn36cwSZM9eNo6PE23Yn15e//1D891ejqNB/SKxq4A2OLzZnT5Frw64SR3uPxP9Ujigyz1E3Rs9D2ITOnMbOUxP6YInPb65Svu2nUjoT+iePt3dlBrRzb44QKKVurHS8KIxbUKGr/CbTXfuzdJbQZdImkszVvtVKnuVQPfqOUyihtw3u+FW8gRJp3sqetouYPqpGQ6HnvNrXnrQsN1TmHJdo36rlz0NHSSI3UBoLXa1LVz14FHGepg6DNTKVqvbmqKHT5hGspaWO3p+7bGWGFnruFFh7Uqv25siVMMR56BEizj0prxO66uNU0dc3bZ/6rv4V3PVuaQqhl0qFuSY9WjovJXOG3acUlWON1Dlksl4KPVLmqOMjoQcMavavaDI/4+2jb0ix7wSOSGcnCxNXjrUncRexf9WNtWWONAaETpZMH03q2kJH+dyELvJ1+3qS77cPi8sc4XMSukGHrLpIzXw4LL3Q0RZG+8iQ/ecntNV+SCoc251MBiqNX5mEltaCoFRCS2vjVFZoUvcdn5KVQwXpe6FPJpHMElpaE1lCm1yfV0JLayITurPY3dcLhC4gt0UvoUuITWRCp5ebxIROLTiBCZ1SdOISGviLyRCA0AChAUIDhAahAUIDhAYIDRAahAYIDRAaIDRAaBAaIDRAaIDQAKFBaIDQAKEBQgOEBqEBQgOEBg7kB60NMaaVAPTaAAAAAElFTkSuQmCC">
 <title>吃多少 · 飲食紀錄</title>
 <style>
-:root{--bg:#131110;--card:#1d1a18;--card2:#272320;--line:rgba(255,255,255,.075);--tx:#f5f0ea;--tx2:#a8a097;--tx3:#6f6861;--ac:#f26b2a;--ac2:#ff9152;--acd:rgba(242,107,42,.15);--ok:#5fc48a;--bad:#ff5a4f;--r:22px;--st:env(safe-area-inset-top,0px);--sb:env(safe-area-inset-bottom,0px)}
+:root{--bg:#131110;--card:#1d1a18;--card2:#272320;--line:rgba(255,255,255,.075);--tx:#f5f0ea;--tx2:#a8a097;--tx3:#6f6861;--ac:#22c55e;--ac2:#4ade80;--acb:#16a34a;--acd:rgba(34,197,94,.15);--ok:#5fc48a;--bad:#ff5a4f;--r:22px;--st:env(safe-area-inset-top,0px);--sb:env(safe-area-inset-bottom,0px)}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;margin:0;padding:0}
 html,body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC","Noto Sans CJK TC","Heiti TC","Microsoft JhengHei",sans-serif;-webkit-font-smoothing:antialiased;touch-action:manipulation;-webkit-text-size-adjust:100%}
 body{min-height:100vh;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240' fill='none' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E %3Cg stroke='%236fcf8f' stroke-opacity='.09'%3E %3Cg transform='translate(38 44) rotate(-18)'%3E%3Cpath d='M0 6c-7 0-9-9-3-11c0-7 9-9 12-4c5-3 12 1 10 7c6 2 4 10-2 10c-3 4-9 4-11 0c-3 3-8 1-6-2z'/%3E%3Cpath d='M2 9l-2 18h7l-1-17M3 15l-4-4M5 17l4-5'/%3E%3C/g%3E %3Cg transform='translate(180 40) rotate(28)'%3E%3Cpath d='M-6 0h12l-6 46z'/%3E%3Cpath d='M-3 12l4 1M-2 24l4 1M0 0l-5-11M0 0v-13M0 0l5-11'/%3E%3C/g%3E %3Cg transform='translate(116 132) rotate(-35)'%3E%3Cpath d='M0-22c14 8 14 36 0 44c-14-8-14-36 0-44z'/%3E%3Cpath d='M0-18v40M0-4l7-6M0 6l-7-6M0 14l7-5'/%3E%3C/g%3E %3Cg transform='translate(202 196) rotate(15)'%3E%3Cpath d='M-18 0c0-10 36-10 36 0c0 9-36 9-36 0z'/%3E%3Ccircle cx='-9' cy='0' r='3.5'/%3E%3Ccircle cx='0' cy='0' r='3.5'/%3E%3Ccircle cx='9' cy='0' r='3.5'/%3E%3Cpath d='M18 0c4-1 6-4 6-7'/%3E%3C/g%3E %3Cg transform='translate(48 186) rotate(-10)'%3E%3Cpath d='M0-22c8 0 9 11 12 18c5 9 2 22-12 22s-17-13-12-22c3-7 4-18 12-18z'/%3E%3Ccircle cx='0' cy='6' r='6'/%3E%3C/g%3E %3C/g%3E %3Cg stroke='%23b9c79a' stroke-opacity='.08'%3E %3Cg transform='translate(118 34)'%3E%3Ccircle r='14'/%3E%3Cpath d='M0-14l-5-5M0-14l5-5M0-14v-6M0-14l-8-1M0-14l8-1'/%3E%3C/g%3E %3Cg transform='translate(198 112) rotate(40)'%3E%3Cpath d='M0-16c10-2 16 8 12 18c-3 9-21 9-24 0c-4-10 2-20 12-18zM0-16c0-4 2-7 5-8'/%3E%3C/g%3E %3Cg transform='translate(42 114) rotate(20)'%3E%3Ccircle r='13'/%3E%3Ccircle r='9'/%3E%3Cpath d='M0-9v18M-9 0h18M-6-6l12 12M6-6l-12 12'/%3E%3C/g%3E %3Cg transform='translate(128 216) rotate(-25)'%3E%3Cpath d='M-12 6c-4-10 4-18 12-14c8-4 16 4 12 14c-3 7-21 7-24 0z'/%3E%3Cpath d='M0-8c-1-4 1-7 4-9'/%3E%3C/g%3E %3C/g%3E%3C/svg%3E") 0 0/240px 240px repeat}/*veg-pattern-v1*/
 button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;-webkit-user-select:none;user-select:none}
 input,select,textarea{font:inherit;font-size:16px;color:var(--tx);background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:10px 12px;width:100%;outline:none;-webkit-appearance:none;appearance:none}
 input:focus,select:focus,textarea:focus{border-color:var(--ac)}
 select{background-image:linear-gradient(45deg,transparent 50%,var(--tx2) 50%),linear-gradient(135deg,var(--tx2) 50%,transparent 50%);background-position:calc(100% - 18px) 50%,calc(100% - 13px) 50%;background-size:5px 5px;background-repeat:no-repeat;padding-right:30px}
 .num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
-.glow{position:fixed;left:-30%;right:-30%;bottom:-38vh;height:72vh;background:radial-gradient(ellipse at center,rgba(242,107,42,.33),rgba(242,107,42,.09) 45%,transparent 70%);pointer-events:none;z-index:0}
+.glow{position:fixed;left:-30%;right:-30%;bottom:-38vh;height:72vh;background:radial-gradient(ellipse at center,rgba(34,197,94,.33),rgba(34,197,94,.09) 45%,transparent 70%);pointer-events:none;z-index:0}
 .screen{display:none;min-height:100vh;padding:calc(var(--st) + 14px) 16px calc(var(--sb) + 32px);max-width:520px;margin:0 auto;position:relative;z-index:1}
 .screen.on{display:block;animation:fade .22s ease}
 @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-.card{background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.022));border:1px solid var(--line);border-radius:var(--r);padding:16px;margin-bottom:12px}
+.card{background:linear-gradient(180deg,rgba(32,30,28,.95),rgba(25,23,22,.95));border:1px solid var(--line);border-radius:var(--r);padding:16px;margin-bottom:12px}
 .row{display:flex;align-items:center;gap:10px}
 .sp{flex:1;min-width:0}
 .mut{color:var(--tx2)}.mut3{color:var(--tx3)}
@@ -39,16 +40,16 @@ select{background-image:linear-gradient(45deg,transparent 50%,var(--tx2) 50%),li
 .hdr{display:flex;align-items:flex-start;gap:10px;margin-bottom:14px}
 .hdr .date{font-size:17px;font-weight:700}
 .pill{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.07);font-size:13px;color:var(--tx2)}
-.pill.acp{background:linear-gradient(180deg,#f8783a,#e35a1c);color:#fff;font-weight:700;box-shadow:0 6px 20px rgba(242,107,42,.35)}
+.pill.acp{background:linear-gradient(180deg,#1faa53,#15803d);color:#fff;font-weight:700;box-shadow:0 6px 20px rgba(34,197,94,.35)}
 .pill .ico{width:15px;height:15px}
 .hero{position:relative;margin:4px 0 6px}
 .hero .big{font-size:64px;font-weight:800;letter-spacing:-1px;line-height:1.05}
 .hero .unit{font-size:18px;color:var(--tx2);margin-left:6px;font-weight:600}
 .hero .shard{position:absolute;right:-16px;top:-34px;width:150px;height:140px;opacity:.95;pointer-events:none}
 .acts{display:grid;grid-template-columns:1fr 64px 1fr;gap:10px;margin:18px 0 22px;align-items:center}
-.abtn{height:58px;border-radius:999px;display:flex;align-items:center;justify-content:center;gap:6px;font-weight:700;font-size:15px;color:#fff;background:linear-gradient(180deg,#f57a3c,#e0581b);box-shadow:0 8px 24px rgba(242,107,42,.28),inset 0 1px 0 rgba(255,255,255,.25);white-space:nowrap;padding:0 8px}
+.abtn{height:58px;border-radius:999px;display:flex;align-items:center;justify-content:center;gap:6px;font-weight:700;font-size:15px;color:#fff;background:linear-gradient(180deg,#1faa53,#15803d);box-shadow:0 8px 24px rgba(34,197,94,.28),inset 0 1px 0 rgba(255,255,255,.25);white-space:nowrap;padding:0 8px}
 .abtn .ico{width:18px;height:18px}
-.abtn.ghost{background:linear-gradient(180deg,rgba(242,107,42,.22),rgba(242,107,42,.12));border:1.5px solid rgba(242,107,42,.75);box-shadow:none;font-size:14px}
+.abtn.ghost{background:linear-gradient(180deg,rgba(34,197,94,.22),rgba(34,197,94,.12));border:1.5px solid rgba(34,197,94,.75);box-shadow:none;font-size:14px}
 .abtn.plus{width:64px;height:64px;padding:0}
 .abtn.plus .ico{width:30px;height:30px;stroke-width:2.6}
 .abtn:active{transform:scale(.96)}
@@ -64,7 +65,7 @@ select{background-image:linear-gradient(45deg,transparent 50%,var(--tx2) 50%),li
 .macro .l{font-size:12.5px;color:var(--tx2)}
 .macro .v{font-size:15px;font-weight:800;color:var(--ac2);margin:3px 0 8px;white-space:nowrap}
 .bar{height:6px;border-radius:6px;background:rgba(255,255,255,.08);overflow:hidden}
-.bar i{display:block;height:100%;border-radius:6px;background:linear-gradient(90deg,#e0581b,#ff9152);min-width:6px}
+.bar i{display:block;height:100%;border-radius:6px;background:linear-gradient(90deg,#16a34a,#4ade80);min-width:6px}
 .bar i.over{background:var(--bad)}
 .cups{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
 .cup{width:22px;height:26px;color:rgba(255,255,255,.16)}
@@ -82,7 +83,7 @@ select{background-image:linear-gradient(45deg,transparent 50%,var(--tx2) 50%),li
 .meal .sb{font-size:12px;color:var(--tx3);margin-top:2px}
 .tag{font-size:11px;padding:2px 7px;border-radius:6px;background:var(--acd);color:var(--ac2);font-weight:600;white-space:nowrap}
 .foot{font-size:11.5px;color:var(--tx3);text-align:center;margin:18px 0 6px;line-height:1.6}
-.banner{border-color:rgba(242,107,42,.5);background:linear-gradient(180deg,rgba(242,107,42,.18),rgba(242,107,42,.06))}
+.banner{border-color:rgba(34,197,94,.5);background:linear-gradient(180deg,rgba(34,197,94,.18),rgba(34,197,94,.06))}
 .ringw{position:relative;display:inline-flex;align-items:center;justify-content:center;flex-direction:column;flex:0 0 auto}
 .ringw svg{display:block;overflow:visible}
 .ringw .in{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
@@ -96,7 +97,8 @@ h2.pt{font-size:22px;font-weight:800;margin:4px 2px 12px}
 .chips{display:flex;gap:8px;overflow-x:auto;padding:2px 0 10px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .chips::-webkit-scrollbar{display:none}
 .chip{flex:0 0 auto;padding:7px 13px;border-radius:999px;background:rgba(255,255,255,.07);border:1px solid var(--line);font-size:13.5px;color:var(--tx2);white-space:nowrap}
-.chip.on{background:var(--ac);border-color:var(--ac);color:#fff;font-weight:700}
+.chip .cn{font-size:11px;opacity:.7;margin-left:4px;font-weight:600}
+.chip.on{background:var(--acb);border-color:var(--acb);color:#fff;font-weight:700}
 .seg{display:inline-flex;padding:4px;border-radius:999px;background:rgba(40,30,25,.9);border:1px solid var(--line)}
 .seg button{padding:9px 18px;border-radius:999px;font-size:14px;color:var(--tx2);font-weight:600;white-space:nowrap}
 .seg button.on{background:#f3ece4;color:#1a1513}
@@ -111,12 +113,12 @@ h2.pt{font-size:22px;font-weight:800;margin:4px 2px 12px}
 .fi .nm{font-size:14.5px;font-weight:600}
 .fi .sb{font-size:12px;color:var(--tx3);margin-top:2px}
 .fi .pr{font-weight:800;font-size:14px;white-space:nowrap}
-.addb{width:34px;height:34px;border-radius:50%;background:var(--acd);color:var(--ac2);display:flex;align-items:center;justify-content:center;border:1px solid rgba(242,107,42,.4);flex:0 0 auto;position:relative}
-.addb .q{position:absolute;top:-6px;right:-6px;background:var(--ac);color:#fff;font-size:10.5px;font-weight:800;min-width:17px;height:17px;border-radius:9px;display:flex;align-items:center;justify-content:center;padding:0 4px}
-.tray{position:fixed;left:12px;right:12px;bottom:calc(var(--sb) + 12px);max-width:496px;margin:0 auto;z-index:25;border-radius:22px;background:rgba(30,26,24,.96);border:1px solid rgba(242,107,42,.5);padding:12px 14px;box-shadow:0 -8px 30px rgba(0,0,0,.5);display:none;-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.addb{width:34px;height:34px;border-radius:50%;background:var(--acd);color:var(--ac2);display:flex;align-items:center;justify-content:center;border:1px solid rgba(34,197,94,.4);flex:0 0 auto;position:relative}
+.addb .q{position:absolute;top:-6px;right:-6px;background:var(--acb);color:#fff;font-size:10.5px;font-weight:800;min-width:17px;height:17px;border-radius:9px;display:flex;align-items:center;justify-content:center;padding:0 4px}
+.tray{position:fixed;left:12px;right:12px;bottom:calc(var(--sb) + 12px);max-width:496px;margin:0 auto;z-index:25;border-radius:22px;background:rgba(30,26,24,.96);border:1px solid rgba(34,197,94,.5);padding:12px 14px;box-shadow:0 -8px 30px rgba(0,0,0,.5);display:none;-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
 .tray.on{display:block}
 .tray.up{bottom:calc(var(--sb) + 76px)}
-.btn{height:52px;border-radius:16px;width:100%;font-weight:800;font-size:16px;display:flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(180deg,#f57a3c,#e0581b);color:#fff;box-shadow:0 8px 22px rgba(242,107,42,.28)}
+.btn{height:52px;border-radius:16px;width:100%;font-weight:800;font-size:16px;display:flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(180deg,#1faa53,#15803d);color:#fff;box-shadow:0 8px 22px rgba(34,197,94,.28)}
 .btn.sec{background:rgba(255,255,255,.08);box-shadow:none;color:var(--tx)}
 .btn.sm{height:40px;font-size:14px;border-radius:12px;width:auto;padding:0 16px;flex:0 0 auto}
 .btn.danger{background:rgba(255,90,79,.14);color:var(--bad);box-shadow:none}
@@ -129,7 +131,7 @@ h2.pt{font-size:22px;font-weight:800;margin:4px 2px 12px}
 .combo .its div:before{content:"·";color:var(--ac2);margin-right:7px;font-weight:800}
 .combo .stats{display:flex;gap:12px;font-size:12px;color:var(--tx2);flex-wrap:wrap}
 .combo .stats b{color:var(--tx);font-size:15px;margin-right:2px}
-.combo.best{border-color:rgba(242,107,42,.65);background:linear-gradient(135deg,rgba(242,107,42,.28),rgba(242,107,42,.06))}
+.combo.best{border-color:rgba(34,197,94,.65);background:linear-gradient(135deg,rgba(34,197,94,.28),rgba(34,197,94,.06))}
 .combo.best:before{content:"";position:absolute;left:0;top:14px;bottom:14px;width:4px;border-radius:0 4px 4px 0;background:var(--ac)}
 .fit{height:4px;border-radius:4px;background:rgba(255,255,255,.08);margin-top:10px;overflow:hidden}
 .fit i{display:block;height:100%;background:var(--ac2)}
@@ -138,7 +140,7 @@ h2.pt{font-size:22px;font-weight:800;margin:4px 2px 12px}
 .mask{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:50;display:none;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
 .mask.on{display:block;animation:fadeo .2s}
 @keyframes fadeo{from{opacity:0}to{opacity:1}}
-.sheet{position:fixed;left:0;right:0;top:0;z-index:51;max-width:520px;margin:0 auto;background:#0f0d0c;border:1px solid rgba(242,107,42,.35);border-top:0;border-radius:0 0 30px 30px;padding:calc(var(--st) + 18px) 18px 18px;transform:translateY(-110%);transition:transform .28s cubic-bezier(.2,.8,.2,1);max-height:92vh;overflow-y:auto;box-shadow:0 20px 50px rgba(0,0,0,.6);visibility:hidden}
+.sheet{position:fixed;left:0;right:0;top:0;z-index:51;max-width:520px;margin:0 auto;background:#0f0d0c;border:1px solid rgba(34,197,94,.35);border-top:0;border-radius:0 0 30px 30px;padding:calc(var(--st) + 18px) 18px 18px;transform:translateY(-110%);transition:transform .28s cubic-bezier(.2,.8,.2,1);max-height:92vh;overflow-y:auto;box-shadow:0 20px 50px rgba(0,0,0,.6);visibility:hidden}
 .sheet.on{transform:none;visibility:visible}
 .sheet.bot{top:auto;bottom:0;border-radius:30px 30px 0 0;border:1px solid rgba(255,255,255,.08);border-bottom:0;padding:18px 18px calc(var(--sb) + 18px);transform:translateY(110%)}
 .sheet.bot.on{transform:none}
@@ -149,9 +151,9 @@ h2.pt{font-size:22px;font-weight:800;margin:4px 2px 12px}
 .pi .x .ico{width:14px;height:14px}
 .form{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .form .full{grid-column:1/-1}
-.toast{position:fixed;left:50%;top:calc(var(--st) + 14px);transform:translate(-50%,-140px);background:#2a2420;border:1px solid rgba(242,107,42,.5);color:var(--tx);padding:10px 18px;border-radius:999px;font-size:14px;font-weight:600;z-index:90;transition:transform .3s;white-space:nowrap;max-width:92vw;overflow:hidden;text-overflow:ellipsis}
+.toast{position:fixed;left:50%;top:calc(var(--st) + 14px);transform:translate(-50%,-140px);background:#2a2420;border:1px solid rgba(34,197,94,.5);color:var(--tx);padding:10px 18px;border-radius:999px;font-size:14px;font-weight:600;z-index:90;transition:transform .3s;white-space:nowrap;max-width:92vw;overflow:hidden;text-overflow:ellipsis}
 .toast.on{transform:translate(-50%,0)}
-.okc{border-radius:0 0 28px 28px;margin:calc(-1 * var(--st) - 14px) -16px 14px;padding:calc(var(--st) + 22px) 20px 20px;background:#0d0b0a;border:1px solid rgba(242,107,42,.55);border-top:0;box-shadow:0 10px 40px rgba(242,107,42,.18)}
+.okc{border-radius:0 0 28px 28px;margin:calc(-1 * var(--st) - 14px) -16px 14px;padding:calc(var(--st) + 22px) 20px 20px;background:#0d0b0a;border:1px solid rgba(34,197,94,.55);border-top:0;box-shadow:0 10px 40px rgba(34,197,94,.18)}
 .okc .h{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16px}
 .okc .h .ck{width:30px;height:30px;border-radius:50%;border:2px solid var(--ok);color:var(--ok);display:flex;align-items:center;justify-content:center}
 .okc .h .ck .ico{width:16px;height:16px}
@@ -175,9 +177,9 @@ textarea{min-height:110px;font-size:13px;font-family:ui-monospace,Menlo,monospac
 .calc{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px}
 .calc div{background:var(--card2);border-radius:14px;padding:10px 12px}
 .calc b{display:block;font-size:20px;font-weight:800;margin-top:2px}
-.warn{color:#ffb38a;font-size:12.5px;margin-top:8px;line-height:1.5}
+.warn{color:#fde68a;font-size:12.5px;margin-top:8px;line-height:1.5}
 .uchip{display:flex;align-items:center;gap:6px;height:44px;max-width:150px;padding:0 13px 0 5px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid var(--line);flex:0 1 auto;min-width:0}
-.uchip .av,.urow .av{width:32px;height:32px;border-radius:50%;flex:0 0 auto;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;color:#fff;background:linear-gradient(180deg,#f57a3c,#e0581b)}
+.uchip .av,.urow .av{width:32px;height:32px;border-radius:50%;flex:0 0 auto;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;color:#fff;background:linear-gradient(180deg,#1faa53,#15803d)}
 .uchip .nm{font-size:14px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .urow{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--line)}
 .urow:first-child{border-top:0}
@@ -192,7 +194,7 @@ input.bad{border-color:var(--bad)!important;background:rgba(255,90,79,.08)}
 .sfoot{position:sticky;bottom:calc(-1 * var(--sb) - 18px);margin:10px -18px calc(-1 * var(--sb) - 18px);padding:10px 18px calc(var(--sb) + 14px);background:linear-gradient(180deg,rgba(15,13,12,.75),#0f0d0c 30%);z-index:2}
 .sheet.kb .sfoot{padding-bottom:10px}
 .ckb{-webkit-appearance:none!important;appearance:none!important;width:26px!important;height:26px;min-width:26px;padding:0!important;border:2px solid var(--ac)!important;border-radius:8px!important;background:transparent!important;position:relative;flex:0 0 auto;margin:0}
-.ckb:checked{background:var(--ac)!important}
+.ckb:checked{background:var(--acb)!important}
 .ckb:checked:after{content:"";position:absolute;left:7px;top:2px;width:7px;height:13px;border:solid #fff;border-width:0 3px 3px 0;transform:rotate(45deg)}
 .ckrow{display:flex;align-items:center;gap:10px;font-size:14.5px;padding:10px 12px;border-radius:14px;background:var(--card2);border:1px solid var(--line);cursor:pointer;line-height:1.35}
 .gbtn{height:30px;min-width:38px;padding:0 8px;border-radius:9px;background:rgba(255,255,255,.07);border:1px solid var(--line);color:var(--tx2);font-size:12px;font-weight:700;flex:0 0 auto}
@@ -201,9 +203,9 @@ input.bad{border-color:var(--bad)!important;background:rgba(255,90,79,.08)}
 .newc{color:var(--ac2);font-weight:700}
 .fi .chk{width:24px;height:24px;border-radius:50%;border:2px solid rgba(255,255,255,.22);flex:0 0 auto;display:flex;align-items:center;justify-content:center;color:transparent}
 .fi .chk .ico{width:14px;height:14px;stroke-width:3}
-.fi.sel .chk{background:var(--ac);border-color:var(--ac);color:#fff}
+.fi.sel .chk{background:var(--acb);border-color:var(--acb);color:#fff}
 .fi.sel .nm{color:var(--ac2)}
-.stp{display:flex;align-items:center;gap:2px;flex:0 0 auto;background:var(--acd);border:1px solid rgba(242,107,42,.45);border-radius:999px;padding:2px}
+.stp{display:flex;align-items:center;gap:2px;flex:0 0 auto;background:var(--acd);border:1px solid rgba(34,197,94,.45);border-radius:999px;padding:2px}
 .stp button{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--ac2)}
 .stp button .ico{width:15px;height:15px;stroke-width:2.6}
 .stp b{min-width:18px;text-align:center;font-size:14px;color:var(--tx)}
@@ -418,7 +420,7 @@ function priceFoods(){return FOODS.concat(customFoods())}// for AI combos (gram/
 function ring(val,max,size,sw,inner,cap,opt){opt=opt||{};
   const r=(size-sw)/2,C=2*Math.PI*r,pct=max>0?Math.max(0,Math.min(val/max,1)):0,over=max>0&&val>max*1.02;
   const col=over?'#ff5a4f':(opt.color||'url(#gr)');const c=size/2;
-  const arc=pct>0?`<circle cx="${c}" cy="${c}" r="${r}" fill="none" stroke="${col}" stroke-width="${sw}" stroke-linecap="round" stroke-dasharray="${(C*pct).toFixed(1)} ${C.toFixed(1)}" transform="rotate(-90 ${c} ${c})" style="filter:drop-shadow(0 0 ${Math.round(sw/1.5)}px rgba(242,107,42,.45))"/>`:'';
+  const arc=pct>0?`<circle cx="${c}" cy="${c}" r="${r}" fill="none" stroke="${col}" stroke-width="${sw}" stroke-linecap="round" stroke-dasharray="${(C*pct).toFixed(1)} ${C.toFixed(1)}" transform="rotate(-90 ${c} ${c})" style="filter:drop-shadow(0 0 ${Math.round(sw/1.5)}px rgba(34,197,94,.45))"/>`:'';
   return `<div class="ringw"><div style="position:relative;width:${size}px;height:${size}px"><svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}"><circle cx="${c}" cy="${c}" r="${r}" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="${sw}"/>${arc}</svg><div class="in">${inner}</div></div>${cap?`<div class="cap">${cap}</div>`:''}</div>`;
 }
 
@@ -453,7 +455,7 @@ R.home=function(){
   ${pr.setup?'':`<div class="card banner" data-go="set" style="cursor:pointer"><div class="b">先設定你的身體資料</div><div class="mut small" style="margin-top:4px;line-height:1.5">目前用預設值計算 TDEE。點這裡改成你的性別、年齡、身高、體重與目標。</div></div>`}
   <div class="pill">${def>=0?'累積赤字':'累積盈餘'}</div>
   <div class="hero"><span class="big num">${fmt(abs)}</span><span class="unit">kcal</span>
-   <svg class="shard" viewBox="0 0 150 140"><defs><linearGradient id="sh" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd27a"/><stop offset=".35" stop-color="#ff8a2a"/><stop offset="1" stop-color="#c2410c" stop-opacity=".2"/></linearGradient></defs><path d="M40 6 L148 52 L118 136 L80 64 Z" fill="none" stroke="rgba(255,255,255,.12)"/><path d="M62 48 L148 52 L118 136 Z" fill="url(#sh)" style="filter:drop-shadow(0 0 14px rgba(255,138,42,.7))"/></svg></div>
+   <svg class="shard" viewBox="0 0 150 140"><defs><linearGradient id="sh" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d9f99d"/><stop offset=".35" stop-color="#4ade80"/><stop offset="1" stop-color="#15803d" stop-opacity=".2"/></linearGradient></defs><path d="M40 6 L148 52 L118 136 L80 64 Z" fill="none" stroke="rgba(255,255,255,.12)"/><path d="M62 48 L148 52 L118 136 Z" fill="url(#sh)" style="filter:drop-shadow(0 0 14px rgba(74,222,128,.6))"/></svg></div>
   ${def>=0?`<div class="pill acp num">${I.bolt}離下一個里程碑還差 ${fmt(toNext)} kcal</div>`:`<div class="pill num">比消耗多吃了 ${fmt(abs)} kcal，慢慢調整就好</div>`}
   <div class="acts">
    <button class="abtn" id="b-ate">${I.edit}我吃完了</button>
@@ -500,12 +502,23 @@ function bindMealDel(root,re){root.querySelectorAll('[data-del]').forEach(b=>b.o
 /* ---------- PICKER (我吃完了 / 自己配) ---------- */
 let tray=[];// {f,q}
 const pick={q:'',store:'全部'};
-function storeChips(sel,attr,picker){return ['全部',...(picker?['我的']:[]),...STORES,...(picker?[CPST,DBST]:(S.custom.length?['我的']:[]))].map(s=>`<button class="chip${sel===s?' on':''}" ${attr}="${esc(s)}">${esc(s)}</button>`).join('')}
+/* food-group chips: 魚/豆/蛋/奶 — DB items by TFDA 分類, others by name keyword; an item may be in several */
+const FCATS=['魚','豆','蛋','奶'],FCTC={'魚貝':'魚','豆類':'豆','蛋類':'蛋','乳品':'奶'};
+const FCKW={'魚':['魚','鮭','鯖','鮪','鱈','鯛','鰻','虱目','蝦','花枝','魷','透抽','小卷','章魚','蟹','蛤','蜆','蚵','牡蠣','干貝','扇貝','淡菜','海鮮'],
+ '豆':['豆腐','豆漿','豆干','豆乾','毛豆','紅豆','綠豆','黃豆','黑豆','豆花','豆皮','腐皮','納豆','百頁','素雞','鷹嘴豆','豆乳','天貝'],
+ '蛋':['蛋'],'奶':['牛奶','鮮奶','鮮乳','冰奶','拿鐵','優格','優酪','起司','乳酪','乾酪','奶昔','奶酪','乳清','保久乳','奶粉']};
+const FCNO={'蛋':['蛋糕','蛋捲','蛋黃酥','蛋白粉','蛋白質','蛋白飲'],'魚':['魚露'],'豆':[],'奶':[]};
+function fcats(f){if(f._fc)return f._fc;let c;if(f.store===DBST){c=FCTC[f.tc]?[FCTC[f.tc]]:[]}
+  else{const n=normQ(f.name);c=FCATS.filter(k=>{let t=n;FCNO[k].forEach(x=>{t=t.split(x).join(' ')});return FCKW[k].some(w=>t.includes(w))})}
+  return f._fc=c}
+function storeChips(sel,attr,picker){const all=picker?allFoods():null;
+  return ['全部',...(picker?['我的']:[]),...STORES,...(picker?[CPST,DBST,...FCATS]:(S.custom.length?['我的']:[]))].map(s=>`<button class="chip${sel===s?' on':''}" ${attr}="${esc(s)}">${esc(s)}${picker&&FCATS.includes(s)?`<span class="cn num">${all.filter(f=>fcats(f).includes(s)).length}</span>`:''}</button>`).join('')}
 function pickerHTML(){
   return `<div class="search">${I.search}<input type="search" placeholder="搜尋食物，例如 雞胸、蛋餅、便當" value="${esc(pick.q)}" data-q enterkeyhint="search"></div><div class="chips">${storeChips(pick.store,'data-st',true)}</div><div class="card fl" data-list></div><div class="foot">組合：「配料組合」裡有吐司、蛋、起司、薯餅…，點多個配料就能組成一餐，重複點加份數；「g」可改克數<br>營養數值為估算 · 找不到？到「我的」新增，或回首頁按「+」</div><div style="height:180px"></div>`}
 function renderList(root){
   if(!root)return;const m=makeMatcher(pick.q);const LIM=200;
-  let list=allFoods().filter(f=>(pick.store==='全部'?(m||f.store!==DBST):f.store===pick.store)&&(!m||m(f)));
+  const fc=FCATS.includes(pick.store);
+  let list=allFoods().filter(f=>(pick.store==='全部'?(m||f.store!==DBST):fc?fcats(f).includes(pick.store):f.store===pick.store)&&(!m||m(f)));
   if(m){const toks=normQ(pick.q).split(' ').filter(Boolean),vs=toks.map(qVariants);// rank: literal name match > synonym name match > alias/category match
     const rk=f=>{const n=normQ(f.name);return toks.every(t=>n.includes(t))?0:vs.every(v=>v.some(x=>n.includes(x)))?1:2};
     const b=[[],[],[]];list.forEach(f=>b[rk(f)].push(f));list=b[0].concat(b[1],b[2])}
@@ -752,15 +765,15 @@ R.hist=function(){
   const vals=days.map(d=>Math.round(dayTot(d).kcal));const mx=Math.max(T.kcal*1.25,td,...vals,500);
   const W=340,H=170,bw=30,gap=(W-30-bw*7)/6,base=H-24,sy=v=>base-(v/mx)*(base-14);
   let bars='';days.forEach((d,i)=>{const x=24+i*(bw+gap),v=vals[i],y=sy(v);const col=v===0?'rgba(255,255,255,.08)':v>T.kcal*1.02?'#ff5a4f':'url(#bg)';
-    bars+=`<rect x="${x.toFixed(1)}" y="${(v?y:base-3).toFixed(1)}" width="${bw}" height="${(v?base-y:3).toFixed(1)}" rx="6" fill="${col}" ${d===histDay?'stroke="#fff" stroke-width="1.5"':''} data-hd="${d}" style="cursor:pointer"/><text x="${(x+bw/2).toFixed(1)}" y="${H-8}" text-anchor="middle" ${d===today?'style="fill:#ff9152"':''}>${WK[pk(d).getDay()]}</text>${v?`<text x="${(x+bw/2).toFixed(1)}" y="${(y-4).toFixed(1)}" text-anchor="middle" style="fill:#a8a097;font-size:9px">${v}</text>`:''}`});
+    bars+=`<rect x="${x.toFixed(1)}" y="${(v?y:base-3).toFixed(1)}" width="${bw}" height="${(v?base-y:3).toFixed(1)}" rx="6" fill="${col}" ${d===histDay?'stroke="#fff" stroke-width="1.5"':''} data-hd="${d}" style="cursor:pointer"/><text x="${(x+bw/2).toFixed(1)}" y="${H-8}" text-anchor="middle" ${d===today?'style="fill:#4ade80"':''}>${WK[pk(d).getDay()]}</text>${v?`<text x="${(x+bw/2).toFixed(1)}" y="${(y-4).toFixed(1)}" text-anchor="middle" style="fill:#a8a097;font-size:9px">${v}</text>`:''}`});
   const ty=sy(T.kcal).toFixed(1);
-  const chart=`<svg class="chart" viewBox="0 0 ${W} ${H}"><line x1="20" x2="${W}" y1="${ty}" y2="${ty}" stroke="#f26b2a" stroke-dasharray="4 4" stroke-opacity=".7"/><text x="${W}" y="${ty-4}" text-anchor="end" style="fill:#f26b2a">目標 ${T.kcal}</text>${bars}</svg>`;
+  const chart=`<svg class="chart" viewBox="0 0 ${W} ${H}"><line x1="20" x2="${W}" y1="${ty}" y2="${ty}" stroke="#22c55e" stroke-dasharray="4 4" stroke-opacity=".7"/><text x="${W}" y="${ty-4}" text-anchor="end" style="fill:#22c55e">目標 ${T.kcal}</text>${bars}</svg>`;
   const avg=vals.filter(v=>v>0);const avgv=avg.length?Math.round(avg.reduce((a,b)=>a+b,0)/avg.length):0;
   const dm=dayMeals(histDay),dt=dayTot(histDay);
   const ws=weightsSorted().slice(-30);let wchart='<div class="empty">還沒有體重紀錄</div>';
   if(ws.length){const goal=num(S.profile.goal,ws[0].kg);const ks=ws.map(w=>num(w.kg)).concat([goal]);const lo=Math.min(...ks)-1,hi=Math.max(...ks)+1;const WH=150,sx=i=>ws.length===1?W/2:24+i*((W-48)/(ws.length-1)),syw=v=>12+(hi-v)/(hi-lo)*(WH-36);
     const pts=ws.map((w,i)=>sx(i).toFixed(1)+','+syw(w.kg).toFixed(1)).join(' ');const gy=syw(goal).toFixed(1);const L=ws[ws.length-1];
-    wchart=`<svg class="chart" viewBox="0 0 ${W} ${WH}"><line x1="20" x2="${W}" y1="${gy}" y2="${gy}" stroke="#5fc48a" stroke-dasharray="4 4" stroke-opacity=".7"/><text x="${W}" y="${gy-4}" text-anchor="end" style="fill:#5fc48a">目標 ${goal.toFixed(1)}</text><polyline points="${pts}" fill="none" stroke="#ff9152" stroke-width="2.5" stroke-linejoin="round"/>${ws.map((w,i)=>`<circle cx="${sx(i).toFixed(1)}" cy="${syw(w.kg).toFixed(1)}" r="3.5" fill="#ff9152"/>`).join('')}<text x="${sx(0).toFixed(1)}" y="${WH-6}" text-anchor="${ws.length===1?'middle':'start'}">${ws[0].date.slice(5).replace('-','/')}</text>${ws.length>1?`<text x="${sx(ws.length-1).toFixed(1)}" y="${WH-6}" text-anchor="end">${L.date.slice(5).replace('-','/')}</text>`:''}<text x="${sx(ws.length-1).toFixed(1)}" y="${(syw(L.kg)-9).toFixed(1)}" text-anchor="${ws.length===1?'middle':'end'}" style="fill:#f5f0ea;font-size:11px;font-weight:700">${num(L.kg).toFixed(1)}</text></svg>`}
+    wchart=`<svg class="chart" viewBox="0 0 ${W} ${WH}"><line x1="20" x2="${W}" y1="${gy}" y2="${gy}" stroke="#c9c2b8" stroke-dasharray="4 4" stroke-opacity=".7"/><text x="${W}" y="${gy-4}" text-anchor="end" style="fill:#c9c2b8">目標 ${goal.toFixed(1)}</text><polyline points="${pts}" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linejoin="round"/>${ws.map((w,i)=>`<circle cx="${sx(i).toFixed(1)}" cy="${syw(w.kg).toFixed(1)}" r="3.5" fill="#4ade80"/>`).join('')}<text x="${sx(0).toFixed(1)}" y="${WH-6}" text-anchor="${ws.length===1?'middle':'start'}">${ws[0].date.slice(5).replace('-','/')}</text>${ws.length>1?`<text x="${sx(ws.length-1).toFixed(1)}" y="${WH-6}" text-anchor="end">${L.date.slice(5).replace('-','/')}</text>`:''}<text x="${sx(ws.length-1).toFixed(1)}" y="${(syw(L.kg)-9).toFixed(1)}" text-anchor="${ws.length===1?'middle':'end'}" style="fill:#f5f0ea;font-size:11px;font-weight:700">${num(L.kg).toFixed(1)}</text></svg>`}
   const wlist=weightsSorted().slice(-6).reverse().map(w=>`<div class="meal"><div class="sp num"><b>${num(w.kg).toFixed(1)} kg</b> <span class="mut small">${md(w.date)}</span></div><button class="ibtn" data-wdel="${esc(w.date)}" aria-label="刪除" style="width:34px;height:34px;color:var(--tx3)">${I.trash}</button></div>`).join('');
   $('#s-hist').innerHTML=topbar()+`<h2 class="pt">紀錄</h2>
   <div class="card"><div class="row"><b>近 7 天熱量</b><div class="sp"></div><span class="small mut num">有記錄日平均 ${fmt(avgv)} kcal</span></div><div style="margin-top:10px">${chart}</div><div class="tiny">點長條可切換到那一天</div></div>
@@ -872,7 +885,7 @@ function renameSheet(id){const u=U.list.find(x=>x.id===id);if(!u)return;
 }
 
 /* ---------- boot ---------- */
-document.body.insertAdjacentHTML('afterbegin','<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="gr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffa067"/><stop offset="1" stop-color="#e5561a"/></linearGradient><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff9152"/><stop offset="1" stop-color="#d9531a"/></linearGradient></defs></svg>');
+document.body.insertAdjacentHTML('afterbegin','<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="gr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#86efac"/><stop offset="1" stop-color="#16a34a"/></linearGradient><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4ade80"/><stop offset="1" stop-color="#15803d"/></linearGradient></defs></svg>');
 $('#mask').onclick=()=>{const s=$('#sheet');if(s.dataset.form&&[...s.querySelectorAll('input[type=text]')].some(i=>i.value.trim())){const b=$('#q-err');if(b){b.textContent='要放棄這筆嗎？按右上角 × 關閉，或按下方按鈕儲存';b.classList.add('on')}return}closeSheet()};
 let lastDay=dk();
 document.addEventListener('visibilitychange',()=>{if(document.hidden||cur==='user')return;if($('#sheet').classList.contains('on')){fitSheet();return}if(cur==='home'||dk()!==lastDay){lastDay=dk();go('home')}});
