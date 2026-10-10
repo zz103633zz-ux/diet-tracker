@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="吃多少">
+<meta name="theme-color" content="#131110">
+<meta name="format-detection" content="telephone=no">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAFAklEQVR42u3dO1LcUBCF4eGWqkiNcUQ58RqcsxAW6IitsAYSyhGPLTigTEExDIN0u/t0939C2wGSPp2+emCdnJ992xGyL4NdQMBBwEHAQcBBwEHAQcBBwEHAQcBBCDgIOAg4CDgIOAg4CDgIOAg4CDgIAQcBBwEHAQcBBwEHAQcBB6mWpe2W//55/v4Pry9P9/7jX3/+gqMXheNze3XRkMsCiO1cqkJZMDERSjElCyymKylDZMEERVIThxqLYkWywAIiH2Ugw3nW0BywqFAhAxlUSO7mqMEiXYUMZFAhWXFUlZHCxwILRkyy5mgiQ7xCTgS/muAm4+buQerIqfWHHA5TGUdqCLQi5UMLh5GMKSbclOj4EMIxXYaRCQclIj5UcMyVMZHF/ePTR3/14/uZHREFHxI4JsqY2xYHZLzHMZ1IuI86b4K5DZEDMl6OaMZnsO8zatSGhYzDteFw0ocLCx4r22XYFcbxqw3TAxw4XAYyptfG3EMb2B+Jfx1SX4bafYs0Y2VLbVivPVdcpFh3QIiwgQzT2ph1gEOGS7KxkldGxhETgGN1bTjfyZg7U7b78C+PkUWGQ6xrY3ucfaQZKzVqI9dwccWhPFCcayPFcEnQHPVkZOkPPxzZXwudNVMSrTzUm6NqbaQoj4GM2G1U9uGEg5mScbLoNkeH2hAvDw8c1EbS8hBtjj61oVweTf97a/075S1wrJgpCnfK/WfKivKwniwdm4PaAAcyyuHoOVM0l6W2ONQuYuvVhumyg4/xqNQGYyVypqSoDanJ0qU5WIeCg5kyMy0+47WiNrY3TQFehs0hcqkSMlA8ZdhdsAiNFak7HKxJ6685ytcGOFjJgoPLV3AwUMDBQAEHtcFYQUa32mCsIKMTDgYKOKgNcMjXRu2HtwMZyEiAo9t33T6Kzn+qb4jD8ylr59qwe4pb5GWf7YfqS7yavCfG1QoBB7WRHYf+mtRahtQnnmgOEoSj2GuhggPF9IVTuebwnyxHLjgcZKh9NlDoUvb68vT/2UCjg+OtCQaKWjw+47V3Uhw24fm7G5+OFR8ZK2aK9V5amlcF739I4PiSidurC5Ff/JKtjSI4bu4ekn6+W3mp4XDy6N4Eq/E5+NRbOsown77gaF4bO/Hb54GnlJsM5YJUf7ZSe7iIb50fjkTf2xW/5eW2JwenFwNFAofU9zJjb3+t3iLPAk7zPofPedb5llc8DuWVh/7TNee9NxJtoekJp7/U8D+vkr0mOMtH1IIj15V5DI4tJ4HF/tVfaoSMY4/3OYwO85b99bo59N//i1qoJX77PEtF573JG4lj+wmxbr971sZ2GYHXd5FjZeKJ9aU9+ILDVIb/dhUcK1O2X626C8jYVfqkxvPxOH6HGtVGpcfI8WPFYp8eIPI8UyxkuG1COxwW59ze/WuBw+cnb43DrpNf7+v7x6dZMhx+WnD4zWz9xa/Ug0k5HJ5ruiOPhNrP0xrHrtPvJcjK2MnePk/0wmnh7RVtjj4VonwaDPYdW5cVR2Ef+tulPlZKjpgs3Af7lK2o0BzZKyQd7sFe5mcu1Ry5KiTvNMyNQ5xI9kVSBRxqSspce5fCEU6k2C2Zgjj8lVS9TVcZhymUDo8Gu+DYyKXbU+LuOMin4WM8BBwEHAQcBBwEHAQcBBwEHAQcBByEgIOAg4CDgIOAg4CDgIOAg4CDgIMQcBBwEHAQcBBwEHAQcJCs+QdqlhVr5gAx/QAAAABJRU5ErkJggg==">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAFAklEQVR42u3dO1LcUBCF4eGWqkiNcUQ58RqcsxAW6IitsAYSyhGPLTigTEExDIN0u/t0939C2wGSPp2+emCdnJ992xGyL4NdQMBBwEHAQcBBwEHAQcBBwEHAQcBBCDgIOAg4CDgIOAg4CDgIOAg4CDgIAQcBBwEHAQcBBwEHAQcBB6mWpe2W//55/v4Pry9P9/7jX3/+gqMXheNze3XRkMsCiO1cqkJZMDERSjElCyymKylDZMEERVIThxqLYkWywAIiH2Ugw3nW0BywqFAhAxlUSO7mqMEiXYUMZFAhWXFUlZHCxwILRkyy5mgiQ7xCTgS/muAm4+buQerIqfWHHA5TGUdqCLQi5UMLh5GMKSbclOj4EMIxXYaRCQclIj5UcMyVMZHF/ePTR3/14/uZHREFHxI4JsqY2xYHZLzHMZ1IuI86b4K5DZEDMl6OaMZnsO8zatSGhYzDteFw0ocLCx4r22XYFcbxqw3TAxw4XAYyptfG3EMb2B+Jfx1SX4bafYs0Y2VLbVivPVdcpFh3QIiwgQzT2ph1gEOGS7KxkldGxhETgGN1bTjfyZg7U7b78C+PkUWGQ6xrY3ucfaQZKzVqI9dwccWhPFCcayPFcEnQHPVkZOkPPxzZXwudNVMSrTzUm6NqbaQoj4GM2G1U9uGEg5mScbLoNkeH2hAvDw8c1EbS8hBtjj61oVweTf97a/075S1wrJgpCnfK/WfKivKwniwdm4PaAAcyyuHoOVM0l6W2ONQuYuvVhumyg4/xqNQGYyVypqSoDanJ0qU5WIeCg5kyMy0+47WiNrY3TQFehs0hcqkSMlA8ZdhdsAiNFak7HKxJ6685ytcGOFjJgoPLV3AwUMDBQAEHtcFYQUa32mCsIKMTDgYKOKgNcMjXRu2HtwMZyEiAo9t33T6Kzn+qb4jD8ylr59qwe4pb5GWf7YfqS7yavCfG1QoBB7WRHYf+mtRahtQnnmgOEoSj2GuhggPF9IVTuebwnyxHLjgcZKh9NlDoUvb68vT/2UCjg+OtCQaKWjw+47V3Uhw24fm7G5+OFR8ZK2aK9V5amlcF739I4PiSidurC5Ff/JKtjSI4bu4ekn6+W3mp4XDy6N4Eq/E5+NRbOsown77gaF4bO/Hb54GnlJsM5YJUf7ZSe7iIb50fjkTf2xW/5eW2JwenFwNFAofU9zJjb3+t3iLPAk7zPofPedb5llc8DuWVh/7TNee9NxJtoekJp7/U8D+vkr0mOMtH1IIj15V5DI4tJ4HF/tVfaoSMY4/3OYwO85b99bo59N//i1qoJX77PEtF573JG4lj+wmxbr971sZ2GYHXd5FjZeKJ9aU9+ILDVIb/dhUcK1O2X626C8jYVfqkxvPxOH6HGtVGpcfI8WPFYp8eIPI8UyxkuG1COxwW59ze/WuBw+cnb43DrpNf7+v7x6dZMhx+WnD4zWz9xa/Ug0k5HJ5ruiOPhNrP0xrHrtPvJcjK2MnePk/0wmnh7RVtjj4VonwaDPYdW5cVR2Ef+tulPlZKjpgs3Af7lK2o0BzZKyQd7sFe5mcu1Ry5KiTvNMyNQ5xI9kVSBRxqSspce5fCEU6k2C2Zgjj8lVS9TVcZhymUDo8Gu+DYyKXbU+LuOMin4WM8BBwEHAQcBBwEHAQcBBwEHAQcBByEgIOAg4CDgIOAg4CDgIOAg4CDgIMQcBBwEHAQcBBwEHAQcJCs+QdqlhVr5gAx/QAAAABJRU5ErkJggg==">
+<title>吃多少 · 飲食紀錄</title>
+<style>
+:root{--bg:#131110;--card:#1d1a18;--card2:#272320;--line:rgba(255,255,255,.075);--tx:#f5f0ea;--tx2:#a8a097;--tx3:#6f6861;--ac:#f26b2a;--ac2:#ff9152;--acd:rgba(242,107,42,.15);--ok:#5fc48a;--bad:#ff5a4f;--r:22px;--st:env(safe-area-inset-top,0px);--sb:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC","Noto Sans CJK TC","Heiti TC","Microsoft JhengHei",sans-serif;-webkit-font-smoothing:antialiased;touch-action:manipulation;-webkit-text-size-adjust:100%}
+body{min-height:100vh;overflow-x:hidden}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;-webkit-user-select:none;user-select:none}
+input,select,textarea{font:inherit;font-size:16px;color:var(--tx);background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:10px 12px;width:100%;outline:none;-webkit-appearance:none;appearance:none}
+input:focus,select:focus,textarea:focus{border-color:var(--ac)}
+select{background-image:linear-gradient(45deg,transparent 50%,var(--tx2) 50%),linear-gradient(135deg,var(--tx2) 50%,transparent 50%);background-position:calc(100% - 18px) 50%,calc(100% - 13px) 50%;background-size:5px 5px;background-repeat:no-repeat;padding-right:30px}
+.num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
+.glow{position:fixed;left:-30%;right:-30%;bottom:-38vh;height:72vh;background:radial-gradient(ellipse at center,rgba(242,107,42,.33),rgba(242,107,42,.09) 45%,transparent 70%);pointer-events:none;z-index:0}
+.screen{display:none;min-height:100vh;padding:calc(var(--st) + 14px) 16px calc(var(--sb) + 32px);max-width:520px;margin:0 auto;position:relative;z-index:1}
+.screen.on{display:block;animation:fade .22s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.card{background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.022));border:1px solid var(--line);border-radius:var(--r);padding:16px;margin-bottom:12px}
+.row{display:flex;align-items:center;gap:10px}
+.sp{flex:1;min-width:0}
+.mut{color:var(--tx2)}.mut3{color:var(--tx3)}
+.small{font-size:12px}.xs{font-size:11px}
+.ac{color:var(--ac2)}
+.b{font-weight:700}.bb{font-weight:800}
+.ico{width:20px;height:20px;display:inline-block;vertical-align:middle;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
+.ibtn{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.06);border:1px solid var(--line);flex:0 0 auto}
+.ibtn:active{transform:scale(.94)}
+.hdr{display:flex;align-items:flex-start;gap:10px;margin-bottom:14px}
+.hdr .date{font-size:17px;font-weight:700}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.07);font-size:13px;color:var(--tx2)}
+.pill.acp{background:linear-gradient(180deg,#f8783a,#e35a1c);color:#fff;font-weight:700;box-shadow:0 6px 20px rgba(242,107,42,.35)}
+.pill .ico{width:15px;height:15px}
+.hero{position:relative;margin:4px 0 6px}
+.hero .big{font-size:64px;font-weight:800;letter-spacing:-1px;line-height:1.05}
+.hero .unit{font-size:18px;color:var(--tx2);margin-left:6px;font-weight:600}
+.hero .shard{position:absolute;right:-16px;top:-34px;width:150px;height:140px;opacity:.95;pointer-events:none}
+.acts{display:grid;grid-template-columns:1fr 64px 1fr;gap:10px;margin:18px 0 22px;align-items:center}
+.abtn{height:58px;border-radius:999px;display:flex;align-items:center;justify-content:center;gap:6px;font-weight:700;font-size:15px;color:#fff;background:linear-gradient(180deg,#f57a3c,#e0581b);box-shadow:0 8px 24px rgba(242,107,42,.28),inset 0 1px 0 rgba(255,255,255,.25);white-space:nowrap;padding:0 8px}
+.abtn .ico{width:18px;height:18px}
+.abtn.ghost{background:linear-gradient(180deg,rgba(242,107,42,.22),rgba(242,107,42,.12));border:1.5px solid rgba(242,107,42,.75);box-shadow:none;font-size:14px}
+.abtn.plus{width:64px;height:64px;padding:0}
+.abtn.plus .ico{width:30px;height:30px;stroke-width:2.6}
+.abtn:active{transform:scale(.96)}
+.sech{display:flex;align-items:baseline;margin:6px 2px 8px}
+.sech h3{font-size:15px;font-weight:700}
+.sech .r{margin-left:auto;font-size:12.5px;color:var(--tx3)}
+.today{display:flex;gap:16px;align-items:center}
+.today .rem{font-size:40px;font-weight:800;line-height:1}
+.kv{display:flex;justify-content:space-between;font-size:13px;color:var(--tx2);margin-top:6px}
+.kv b{color:var(--tx);font-weight:700}
+.macros{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+.macro{padding:12px;border-radius:18px;margin:0}
+.macro .l{font-size:12.5px;color:var(--tx2)}
+.macro .v{font-size:15px;font-weight:800;color:var(--ac2);margin:3px 0 8px;white-space:nowrap}
+.bar{height:6px;border-radius:6px;background:rgba(255,255,255,.08);overflow:hidden}
+.bar i{display:block;height:100%;border-radius:6px;background:linear-gradient(90deg,#e0581b,#ff9152);min-width:6px}
+.bar i.over{background:var(--bad)}
+.cups{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.cup{width:22px;height:26px;color:rgba(255,255,255,.16)}
+.cup.f{color:#5aa9ff}
+.goalv{font-size:19px;font-weight:800;color:var(--ac2);margin-top:3px}
+.note{font-size:14.5px;font-weight:600;line-height:1.5;margin:18px 2px 4px}
+.dots{display:grid;grid-template-columns:repeat(16,1fr);gap:9px 0;justify-items:center;padding:4px 0}
+.dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.12);display:inline-block}
+.dot.l{background:#f2ece6}.dot.t{background:var(--ac);box-shadow:0 0 8px var(--ac)}
+.legend{display:flex;gap:14px;font-size:11.5px;color:var(--tx3);margin-top:12px}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.meal{display:flex;align-items:center;gap:10px;padding:11px 0;border-top:1px solid var(--line)}
+.meal:first-child{border-top:0}
+.meal .nm{font-size:14.5px;font-weight:600;line-height:1.35}
+.meal .sb{font-size:12px;color:var(--tx3);margin-top:2px}
+.tag{font-size:11px;padding:2px 7px;border-radius:6px;background:var(--acd);color:var(--ac2);font-weight:600;white-space:nowrap}
+.foot{font-size:11.5px;color:var(--tx3);text-align:center;margin:18px 0 6px;line-height:1.6}
+.banner{border-color:rgba(242,107,42,.5);background:linear-gradient(180deg,rgba(242,107,42,.18),rgba(242,107,42,.06))}
+.ringw{position:relative;display:inline-flex;align-items:center;justify-content:center;flex-direction:column;flex:0 0 auto}
+.ringw svg{display:block;overflow:visible}
+.ringw .in{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.ringw .in b{font-weight:800}
+.ringw .cap{font-size:12px;color:var(--tx2);margin-top:4px}
+.ringrow{display:flex;justify-content:center;gap:12px}
+.top{display:flex;align-items:center;gap:10px;margin-bottom:16px;position:relative;min-height:44px}
+.top .ttl{position:absolute;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:6px;padding:8px 16px;border-radius:999px;background:rgba(0,0,0,.45);border:1px solid var(--line);font-weight:800;font-size:15px;white-space:nowrap}
+.top .ttl .ico{color:var(--ac);width:17px;height:17px}
+h2.pt{font-size:22px;font-weight:800;margin:4px 2px 12px}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:2px 0 10px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;padding:7px 13px;border-radius:999px;background:rgba(255,255,255,.07);border:1px solid var(--line);font-size:13.5px;color:var(--tx2);white-space:nowrap}
+.chip.on{background:var(--ac);border-color:var(--ac);color:#fff;font-weight:700}
+.seg{display:inline-flex;padding:4px;border-radius:999px;background:rgba(40,30,25,.9);border:1px solid var(--line)}
+.seg button{padding:9px 18px;border-radius:999px;font-size:14px;color:var(--tx2);font-weight:600;white-space:nowrap}
+.seg button.on{background:#f3ece4;color:#1a1513}
+.bottombar{position:fixed;left:0;right:0;bottom:0;padding:10px 16px calc(var(--sb) + 12px);display:flex;justify-content:center;z-index:20;pointer-events:none;background:linear-gradient(180deg,transparent,rgba(19,17,16,.85) 40%)}
+.bottombar>*{pointer-events:auto}
+.search{position:relative;margin-bottom:10px}
+.search .ico{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--tx3);width:18px;height:18px}
+.search input{padding-left:38px;border-radius:14px}
+.fl{padding:4px 14px}
+.fi{display:flex;align-items:center;gap:10px;padding:11px 0;border-top:1px solid var(--line);cursor:pointer}
+.fi:first-child{border-top:0}
+.fi .nm{font-size:14.5px;font-weight:600}
+.fi .sb{font-size:12px;color:var(--tx3);margin-top:2px}
+.fi .pr{font-weight:800;font-size:14px;white-space:nowrap}
+.addb{width:34px;height:34px;border-radius:50%;background:var(--acd);color:var(--ac2);display:flex;align-items:center;justify-content:center;border:1px solid rgba(242,107,42,.4);flex:0 0 auto;position:relative}
+.addb .q{position:absolute;top:-6px;right:-6px;background:var(--ac);color:#fff;font-size:10.5px;font-weight:800;min-width:17px;height:17px;border-radius:9px;display:flex;align-items:center;justify-content:center;padding:0 4px}
+.tray{position:fixed;left:12px;right:12px;bottom:calc(var(--sb) + 12px);max-width:496px;margin:0 auto;z-index:25;border-radius:22px;background:rgba(30,26,24,.96);border:1px solid rgba(242,107,42,.5);padding:12px 14px;box-shadow:0 -8px 30px rgba(0,0,0,.5);display:none;-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.tray.on{display:block}
+.tray.up{bottom:calc(var(--sb) + 76px)}
+.btn{height:52px;border-radius:16px;width:100%;font-weight:800;font-size:16px;display:flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(180deg,#f57a3c,#e0581b);color:#fff;box-shadow:0 8px 22px rgba(242,107,42,.28)}
+.btn.sec{background:rgba(255,255,255,.08);box-shadow:none;color:var(--tx)}
+.btn.sm{height:40px;font-size:14px;border-radius:12px;width:auto;padding:0 16px;flex:0 0 auto}
+.btn.danger{background:rgba(255,90,79,.14);color:var(--bad);box-shadow:none}
+.btn:active{transform:scale(.98)}
+.combo{position:relative;overflow:hidden;cursor:pointer}
+.combo:active{transform:scale(.985)}
+.combo .st{font-weight:800;font-size:17px}
+.combo .price{font-size:26px;font-weight:800;margin-left:auto}
+.combo .its{margin:8px 0 10px;font-size:14px;line-height:1.6}
+.combo .its div:before{content:"·";color:var(--ac2);margin-right:7px;font-weight:800}
+.combo .stats{display:flex;gap:12px;font-size:12px;color:var(--tx2);flex-wrap:wrap}
+.combo .stats b{color:var(--tx);font-size:15px;margin-right:2px}
+.combo.best{border-color:rgba(242,107,42,.65);background:linear-gradient(135deg,rgba(242,107,42,.28),rgba(242,107,42,.06))}
+.combo.best:before{content:"";position:absolute;left:0;top:14px;bottom:14px;width:4px;border-radius:0 4px 4px 0;background:var(--ac)}
+.fit{height:4px;border-radius:4px;background:rgba(255,255,255,.08);margin-top:10px;overflow:hidden}
+.fit i{display:block;height:100%;background:var(--ac2)}
+.ctrl{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.lbl{font-size:12px;color:var(--tx2);margin:0 0 5px 2px;display:block}
+.mask{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:50;display:none;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.mask.on{display:block;animation:fadeo .2s}
+@keyframes fadeo{from{opacity:0}to{opacity:1}}
+.sheet{position:fixed;left:0;right:0;top:0;z-index:51;max-width:520px;margin:0 auto;background:#0f0d0c;border:1px solid rgba(242,107,42,.35);border-top:0;border-radius:0 0 30px 30px;padding:calc(var(--st) + 18px) 18px 18px;transform:translateY(-110%);transition:transform .28s cubic-bezier(.2,.8,.2,1);max-height:92vh;overflow-y:auto;box-shadow:0 20px 50px rgba(0,0,0,.6);visibility:hidden}
+.sheet.on{transform:none;visibility:visible}
+.sheet.bot{top:auto;bottom:0;border-radius:30px 30px 0 0;border:1px solid rgba(255,255,255,.08);border-bottom:0;padding:18px 18px calc(var(--sb) + 18px);transform:translateY(110%)}
+.sheet.bot.on{transform:none}
+.pend{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0}
+.pi{position:relative;background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:10px 26px 10px 10px;font-size:13px}
+.pi .k{font-size:11.5px;color:var(--tx3);margin-top:3px}
+.pi .x{position:absolute;right:4px;top:4px;width:24px;height:24px;display:flex;align-items:center;justify-content:center;color:var(--tx2)}
+.pi .x .ico{width:14px;height:14px}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.form .full{grid-column:1/-1}
+.toast{position:fixed;left:50%;top:calc(var(--st) + 14px);transform:translate(-50%,-140px);background:#2a2420;border:1px solid rgba(242,107,42,.5);color:var(--tx);padding:10px 18px;border-radius:999px;font-size:14px;font-weight:600;z-index:90;transition:transform .3s;white-space:nowrap;max-width:92vw;overflow:hidden;text-overflow:ellipsis}
+.toast.on{transform:translate(-50%,0)}
+.okc{border-radius:0 0 28px 28px;margin:calc(-1 * var(--st) - 14px) -16px 14px;padding:calc(var(--st) + 22px) 20px 20px;background:#0d0b0a;border:1px solid rgba(242,107,42,.55);border-top:0;box-shadow:0 10px 40px rgba(242,107,42,.18)}
+.okc .h{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16px}
+.okc .h .ck{width:30px;height:30px;border-radius:50%;border:2px solid var(--ok);color:var(--ok);display:flex;align-items:center;justify-content:center}
+.okc .h .ck .ico{width:16px;height:16px}
+.okc p{margin-top:12px;font-size:15px;line-height:1.55;font-weight:600}
+.streakn{font-size:64px;font-weight:800;line-height:1}
+.seg-c{display:flex;gap:6px;align-items:flex-end;height:44px;margin:12px 0 18px}
+.seg-c i{flex:1;border-radius:4px;background:rgba(255,255,255,.1);height:8px}
+.seg-c i.l{background:#f2ece6;height:14px}
+.seg-c i.t{background:var(--ac);height:22px;box-shadow:0 0 10px var(--ac)}
+.chart{width:100%;display:block}
+.chart text{fill:var(--tx3);font-size:10px;font-family:inherit}
+.dnav{display:flex;align-items:center;gap:8px}
+.dnav .d{flex:1;text-align:center;font-weight:700}
+.hr{height:1px;background:var(--line);margin:12px 0}
+.empty{text-align:center;color:var(--tx3);padding:22px 0;font-size:14px}
+.tiny{font-size:11px;color:var(--tx3)}
+textarea{min-height:110px;font-size:13px;font-family:ui-monospace,Menlo,monospace}
+.sw{display:flex;gap:8px}
+.sw button{flex:1;height:44px;border-radius:12px;background:var(--card2);border:1px solid var(--line);color:var(--tx2);font-weight:600}
+.sw button.on{background:var(--acd);border-color:var(--ac);color:var(--ac2)}
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px}
+.calc div{background:var(--card2);border-radius:14px;padding:10px 12px}
+.calc b{display:block;font-size:20px;font-weight:800;margin-top:2px}
+.warn{color:#ffb38a;font-size:12.5px;margin-top:8px;line-height:1.5}
+</style>
+</head>
+<body>
+<div class="glow"></div>
+<section class="screen" id="s-home"></section>
+<section class="screen" id="s-log"></section>
+<section class="screen" id="s-rec"></section>
+<section class="screen" id="s-done"></section>
+<section class="screen" id="s-hist"></section>
+<section class="screen" id="s-set"></section>
+<div class="tray" id="tray"></div>
+<div class="mask" id="mask"></div>
+<div class="sheet" id="sheet"></div>
+<div class="toast" id="toast"></div>
+<script>
+"use strict";
+/* ---------- icons (inline SVG, no emoji) ---------- */
+const I={
+gear:'<svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>',
+hist:'<svg class="ico" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l3 2"/></svg>',
+edit:'<svg class="ico" viewBox="0 0 24 24"><path d="M11 4H5a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h13a2 2 0 0 0 2-2v-6"/><path d="M18.5 2.5a2.1 2.1 0 0 1 3 3L12 15l-4 1 1-4z"/></svg>',
+plus:'<svg class="ico" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>',
+minus:'<svg class="ico" viewBox="0 0 24 24"><path d="M5 12h14"/></svg>',
+cards:'<svg class="ico" viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M7 5h10M9 2h6"/></svg>',
+back:'<svg class="ico" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>',
+next:'<svg class="ico" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>',
+flame:'<svg class="ico" viewBox="0 0 24 24" style="fill:currentColor;stroke:none"><path d="M12 2c1 3.5 5 6 5 11a5 5 0 0 1-10 0c0-2.2 1-3.8 2.2-5 .2 1.6 1 2.6 2 3 0-3.5-.5-6 .8-9z"/></svg>',
+bolt:'<svg class="ico" viewBox="0 0 24 24" style="fill:currentColor;stroke:none"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>',
+trash:'<svg class="ico" viewBox="0 0 24 24"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/></svg>',
+check:'<svg class="ico" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>',
+x:'<svg class="ico" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>',
+shuffle:'<svg class="ico" viewBox="0 0 24 24"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>',
+search:'<svg class="ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>',
+fork:'<svg class="ico" viewBox="0 0 24 24"><path d="M6 2v7a2 2 0 0 0 4 0V2M8 2v20M17 2c-2 2-2.5 5-2.5 8h3V22"/></svg>',
+drop:'<svg viewBox="0 0 24 28" width="100%" height="100%"><path fill="currentColor" d="M12 2C9 7 5 11 5 16a7 7 0 0 0 14 0c0-5-4-9-7-14z"/></svg>',
+down:'<svg class="ico" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>',
+up:'<svg class="ico" viewBox="0 0 24 24"><path d="M12 21V9M7 14l5-5 5 5M5 3h14"/></svg>'
+};
+
+/* ---------- food database (estimates) ---------- */
+// [name, kcal, protein g, carbs g, fat g, price NT$, category main/protein/side/drink]
+const RAW={
+'7-11':[
+['日式照燒雞腿便當',736,28,97,26,99,'main'],['咖哩雞肉飯',650,20,95,20,79,'main'],['牛肉蓋飯',690,25,95,22,89,'main'],['白醬雞肉義大利麵',620,22,75,25,79,'main'],['雞絲涼麵',480,15,65,17,59,'main'],['大亨堡',330,11,30,19,45,'main'],['火腿蛋三明治',300,13,30,14,35,'main'],['鮪魚飯糰',210,6,33,6,32,'main'],['肉鬆飯糰',230,7,38,5,32,'main'],
+['原味雞胸肉',120,25,1,2,55,'protein'],['舒肥雞胸 香草',130,24,2,3,59,'protein'],['茶葉蛋',75,7,1,5,13,'protein'],['溏心蛋',80,7,1,5,25,'protein'],['希臘優格',120,10,12,3,45,'protein'],
+['烤地瓜',200,2,46,0,35,'side'],['雞肉凱薩沙拉',250,15,12,15,69,'side'],['關東煮 白蘿蔔',15,0,3,0,10,'side'],['關東煮 黑輪',120,6,13,5,15,'side'],['香蕉 1根',100,1,26,0,20,'side'],
+['鮮奶 290ml',190,9,14,10,35,'drink'],['無糖豆漿 400ml',130,13,6,6,25,'drink'],['美式咖啡 中杯',10,0,2,0,45,'drink'],['拿鐵 中杯',180,9,15,9,55,'drink'],['高蛋白飲 330ml',150,24,8,2,55,'drink']],
+'全家':[
+['炙燒雞腿便當',680,32,90,20,99,'main'],['咖哩豬排飯',780,22,105,30,89,'main'],['雙蛋三明治',330,14,30,17,35,'main'],['雞肉捲',420,16,50,17,59,'main'],['唐揚雞飯糰',250,8,38,7,35,'main'],['鮭魚飯糰',200,6,33,4,35,'main'],['蕎麥涼麵',380,12,68,6,55,'main'],
+['舒肥雞胸 原味',120,24,1,2,55,'protein'],['熱食烤雞腿',300,28,2,20,65,'protein'],['溫泉蛋',80,6,1,6,22,'protein'],
+['蛋白沙拉',180,12,10,10,59,'side'],['烤地瓜',200,2,46,0,35,'side'],
+['濃厚豆漿',160,12,10,7,25,'drink'],['拿鐵 大杯',220,11,18,11,60,'drink'],['美式咖啡 大杯',15,0,3,0,50,'drink']],
+'萊爾富':[
+['咖哩雞肉飯',700,18,100,24,79,'main'],['鮪魚三明治',290,12,30,13,35,'main'],['紅藜鮭魚飯糰',210,6,34,5,35,'main'],['蛋沙拉堡',340,11,35,17,39,'main'],['微波牛肉麵',520,22,70,16,89,'main'],
+['雞胸肉',120,25,1,2,49,'protein'],['茶葉蛋',75,7,1,5,12,'protein'],
+['生菜沙拉',60,2,8,2,45,'side'],['美式咖啡',15,0,3,0,45,'drink'],['無糖豆漿',130,13,6,6,25,'drink']],
+'肯德基':[
+['咔啦雞腿堡',560,26,45,30,99,'main'],['紐奧良烤腿堡',470,23,45,21,95,'main'],['咔啦脆雞 1塊',300,18,12,20,75,'protein'],['紐奧良嫩烤雞腿',250,25,3,15,75,'protein'],['上校雞塊 4塊',230,13,12,14,69,'protein'],
+['原味蛋撻',220,3,25,12,42,'side'],['薯條 中',330,4,42,16,55,'side'],['玉米濃湯 小',100,2,15,3,45,'side'],['可樂 中',200,0,50,0,40,'drink']],
+'麥當勞':[
+['大麥克',530,25,46,28,79,'main'],['麥香雞',380,15,40,18,49,'main'],['勁辣雞腿堡',540,24,46,28,79,'main'],['嫩煎雞腿堡',380,25,37,14,75,'main'],['雙層牛肉吉事堡',450,25,34,24,69,'main'],['豬肉滿福堡加蛋',410,22,30,22,59,'main'],['麥香魚',330,14,38,13,59,'main'],
+['麥脆雞 腿 1塊',360,20,13,24,70,'protein'],['麥克雞塊 6塊',260,14,16,16,64,'protein'],
+['薯條 中',330,4,42,16,55,'side'],['蘋果派',230,2,30,11,35,'side'],['四季沙拉',25,1,4,0,50,'side'],
+['可樂 中',210,0,52,0,38,'drink'],['無糖綠茶 中',0,0,0,0,33,'drink']],
+'八方雲集':[
+['招牌鍋貼 10顆',520,20,55,25,60,'main'],['韭菜鍋貼 10顆',500,18,55,23,60,'main'],['咖哩鍋貼 10顆',540,19,58,26,65,'main'],['招牌水餃 10顆',480,22,55,18,60,'main'],['麻醬乾麵',450,13,60,17,45,'main'],
+['鮮蝦餛飩湯',200,12,15,9,50,'side'],['酸辣湯',120,5,15,4,35,'side'],['玉米濃湯',150,3,22,5,35,'side'],['貢丸湯',120,8,6,7,30,'side'],['豆漿',120,7,12,5,25,'drink']],
+'便當店':[
+['雞腿便當',850,38,100,32,110,'main'],['排骨便當',800,30,100,30,95,'main'],['控肉便當',950,25,100,48,95,'main'],['三寶飯',900,35,105,38,120,'main'],['烤鯖魚便當',750,30,95,26,100,'main'],['燒肉飯',750,26,100,26,90,'main'],['自助餐 三菜一肉',700,28,85,26,85,'main'],['健康餐盒 舒肥雞胸',500,38,50,14,130,'main'],['魯肉飯 小',350,8,45,15,35,'main'],
+['滷蛋',75,7,1,5,15,'protein'],['燙青菜',60,3,6,3,35,'side'],['味噌湯',50,3,5,2,20,'side'],['滷豆腐',90,8,3,5,15,'side']],
+'早餐店':[
+['香雞蛋吐司',420,18,40,21,50,'main'],['薯餅蛋吐司',400,10,45,20,45,'main'],['厚牛起司堡',520,25,35,30,70,'main'],['火腿蛋吐司',320,15,32,14,40,'main'],['培根蛋吐司',380,15,32,21,45,'main'],['鮪魚蛋吐司',380,16,32,20,45,'main'],['總匯三明治',450,18,40,24,60,'main'],['卡拉雞腿堡',560,25,45,30,65,'main'],
+['蔬菜蛋餅',280,9,30,13,35,'main'],['起司蛋餅',330,13,30,17,40,'main'],['玉米蛋餅',310,10,35,14,40,'main'],['蘿蔔糕 2片',300,4,35,16,35,'main'],['黑胡椒鐵板麵',550,13,75,22,55,'main'],['煎餃 10顆',500,15,50,27,60,'main'],
+['荷包蛋',90,7,0,7,15,'protein'],
+['奶茶 中',220,2,32,9,25,'drink'],['大冰奶',380,4,55,16,35,'drink'],['紅茶 中 (半糖)',100,0,25,0,20,'drink'],['無糖豆漿 中',130,13,6,6,20,'drink']],
+'手搖飲':[
+['珍珠奶茶 大 半糖',550,6,85,20,60,'drink'],['珍珠奶茶 大 無糖',420,6,55,20,60,'drink'],['黑糖珍珠鮮奶 大',600,12,85,22,75,'drink'],['鮮奶茶 大 半糖',350,9,45,14,65,'drink'],['芋頭鮮奶 大',450,10,60,18,75,'drink'],['紅茶拿鐵 中 半糖',250,6,35,9,55,'drink'],
+['四季春 大 無糖',0,0,0,0,30,'drink'],['綠茶 大 微糖',120,0,30,0,30,'drink'],['冬瓜檸檬 大',300,0,75,0,45,'drink'],['多多綠 大 半糖',280,2,65,1,50,'drink'],['檸檬綠 大 半糖',220,0,55,0,50,'drink'],['仙草凍奶茶 大',400,4,65,14,55,'drink']],
+'自煮食材':[
+['雞胸肉 100g',110,23,0,2,20,'protein'],['去皮雞腿肉 100g',150,19,0,8,22,'protein'],['豬里肌 100g',190,20,0,12,30,'protein'],['瘦牛肉 100g',160,21,0,8,60,'protein'],['鮭魚 100g',200,20,0,13,60,'protein'],['水煮鮪魚罐 1罐',100,22,0,1,45,'protein'],['雞蛋 1顆',75,7,1,5,7,'protein'],['板豆腐 半盒',120,12,3,7,15,'protein'],['毛豆 100g',130,12,9,5,20,'protein'],['高蛋白粉 1匙',120,24,3,2,25,'protein'],
+['白飯 一碗',280,5,62,1,10,'side'],['白飯 半碗',140,3,31,0,5,'side'],['糙米飯 一碗',270,6,57,2,12,'side'],['地瓜 100g',120,1,28,0,8,'side'],['燕麥片 40g',150,5,27,3,8,'side'],['全麥吐司 1片',80,4,14,1,6,'side'],['蕎麥麵 100g',340,14,70,2,15,'side'],
+['燙青菜 一份',30,2,5,0,15,'side'],['花椰菜 100g',30,3,5,0,15,'side'],['橄欖油 1匙',120,0,0,14,3,'side'],['蘋果 1顆',100,0,26,0,25,'side'],['香蕉 1根',100,1,26,0,10,'side'],
+['鮮奶 240ml',155,8,12,9,25,'drink'],['無糖豆漿 400ml',130,13,6,6,25,'drink']]
+};
+const STORES=Object.keys(RAW);
+const FOODS=[];
+STORES.forEach((s,si)=>RAW[s].forEach((r,i)=>FOODS.push({id:'f'+si+'_'+i,name:r[0],store:s,kcal:r[1],p:r[2],c:r[3],f:r[4],price:r[5],cat:r[6]})));
+
+/* ---------- state ---------- */
+const KEY='dietTracker.v1';
+function defProfile(){return {sex:'m',age:30,height:175,weight:85,goal:70,activity:1.375,deficit:500,waterGoal:8,setup:false}}
+function defState(){return {v:1,profile:defProfile(),meals:[],water:{},weights:[],custom:[]}}
+function normalize(j){const d=defState();if(!j||typeof j!=='object')return d;
+  return {v:1,profile:Object.assign(d.profile,j.profile||{}),meals:Array.isArray(j.meals)?j.meals:[],water:(j.water&&typeof j.water==='object')?j.water:{},weights:Array.isArray(j.weights)?j.weights:[],custom:Array.isArray(j.custom)?j.custom:[]}}
+function load(){try{const t=localStorage.getItem(KEY);if(t)return normalize(JSON.parse(t))}catch(e){}return defState()}
+let S=load();
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){toast('儲存失敗：瀏覽器空間不足或私密模式')}}
+
+/* ---------- utils ---------- */
+const $=s=>document.querySelector(s);
+const pad=n=>String(n).padStart(2,'0');
+const dk=(d=new Date())=>d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
+const pk=k=>{const[a,b,c]=k.split('-').map(Number);return new Date(a,b-1,c,12)};
+const addDays=(k,n)=>{const d=pk(k);d.setDate(d.getDate()+n);return dk(d)};
+const diffDays=(a,b)=>Math.round((pk(b)-pk(a))/864e5);
+const WK=['日','一','二','三','四','五','六'];
+const md=k=>{const d=pk(k);return (d.getMonth()+1)+'/'+d.getDate()+' (週'+WK[d.getDay()]+')'};
+const fmt=n=>Math.round(n).toLocaleString('en-US');
+const r1=n=>Math.round(n*10)/10;
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+const num=(v,d=0)=>{const n=parseFloat(v);return isFinite(n)?n:d};
+const rnd=a=>a[Math.floor(Math.random()*a.length)];
+let toastT;function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('on'),2000)}
+function mealLabel(h,m){const t=h*60+m;return t<630?'早餐':t<840?'午餐':t<1020?'點心':t<1260?'晚餐':'宵夜'}
+
+/* ---------- calculations ---------- */
+function weightsSorted(){return S.weights.slice().sort((a,b)=>a.date<b.date?-1:a.date>b.date?1:0)}
+function curWeight(){const w=weightsSorted();return w.length?num(w[w.length-1].kg,70):num(S.profile.weight,70)}
+function bmr(){const p=S.profile;return 10*curWeight()+6.25*num(p.height,170)-5*num(p.age,30)+(p.sex==='f'?-161:5)}
+function tdee(){return Math.round(bmr()*num(S.profile.activity,1.375))}
+function floorKcal(){return S.profile.sex==='f'?1200:1500}
+function target(){return Math.max(Math.round(tdee()-num(S.profile.deficit,0)),Math.min(floorKcal(),tdee()))}
+function macroT(){const T=target();const P=Math.round(1.6*curWeight());const F=Math.round(T*0.28/9);const C=Math.max(0,Math.round((T-P*4-F*9)/4));return {kcal:T,p:P,c:C,f:F}}
+function sumItems(items){const t={kcal:0,p:0,c:0,f:0,price:0};items.forEach(x=>{const q=x.q||1;t.kcal+=x.kcal*q;t.p+=x.p*q;t.c+=x.c*q;t.f+=x.f*q;t.price+=x.price*q});return t}
+function dayMeals(d){return S.meals.filter(m=>m.date===d).sort((a,b)=>a.time<b.time?-1:1)}
+function dayTot(d){const t={kcal:0,p:0,c:0,f:0,price:0};dayMeals(d).forEach(m=>{t.kcal+=num(m.kcal);t.p+=num(m.p);t.c+=num(m.c);t.f+=num(m.f);t.price+=num(m.price)});return t}
+function loggedDates(){return [...new Set(S.meals.map(m=>m.date))].sort()}
+function streakInfo(){
+  const ds=loggedDates(),set=new Set(ds),today=dk();
+  let cur=0,d=set.has(today)?today:addDays(today,-1);
+  while(set.has(d)){cur++;d=addDays(d,-1)}
+  let best=0,run=0,prev=null;ds.forEach(x=>{run=(prev&&diffDays(prev,x)===1)?run+1:1;best=Math.max(best,run);prev=x});
+  const past=ds.filter(x=>x<today);const last=past.length?past[past.length-1]:null;
+  return {cur,best,loggedToday:set.has(today),last,gap:last?diffDays(last,today):null,ds,set};
+}
+// cumulative deficit over completed (past) logged days
+function cumDeficit(){const today=dk(),T=tdee();let s=0;loggedDates().forEach(d=>{if(d<today)s+=T-dayTot(d).kcal});return Math.round(s)}
+function allFoods(){return FOODS.concat(S.custom.map(c=>Object.assign({cat:'main'},c,{store:'我的'})))}
+
+/* ---------- ring svg ---------- */
+function ring(val,max,size,sw,inner,cap,opt){opt=opt||{};
+  const r=(size-sw)/2,C=2*Math.PI*r,pct=max>0?Math.max(0,Math.min(val/max,1)):0,over=max>0&&val>max*1.02;
+  const col=over?'#ff5a4f':(opt.color||'url(#gr)');const c=size/2;
+  const arc=pct>0?`<circle cx="${c}" cy="${c}" r="${r}" fill="none" stroke="${col}" stroke-width="${sw}" stroke-linecap="round" stroke-dasharray="${(C*pct).toFixed(1)} ${C.toFixed(1)}" transform="rotate(-90 ${c} ${c})" style="filter:drop-shadow(0 0 ${Math.round(sw/1.5)}px rgba(242,107,42,.45))"/>`:'';
+  return `<div class="ringw"><div style="position:relative;width:${size}px;height:${size}px"><svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}"><circle cx="${c}" cy="${c}" r="${r}" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="${sw}"/>${arc}</svg><div class="in">${inner}</div></div>${cap?`<div class="cap">${cap}</div>`:''}</div>`;
+}
+
+/* ---------- navigation ---------- */
+let cur='home';
+const R={};
+function go(n,arg){cur=n;document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('on',s.id==='s-'+n));closeSheet();R[n](arg);window.scrollTo(0,0);updTray()}
+function topbar(){const rem=Math.round(target()-dayTot(dk()).kcal);
+  return `<div class="top"><button class="ibtn" data-go="home" aria-label="返回">${I.back}</button><div class="ttl num">${I.flame}${fmt(rem)}</div></div>`}
+document.addEventListener('click',e=>{const g=e.target.closest('[data-go]');if(g){e.preventDefault();go(g.dataset.go)}});
+
+/* ---------- HOME ---------- */
+R.home=function(){
+  const today=dk(),T=macroT(),E=dayTot(today),td=tdee(),bm=Math.round(bmr());
+  const rem=T.kcal-E.kcal,st=streakInfo(),def=cumDeficit();
+  const ms=3500,abs=Math.abs(def),toNext=ms-(def%ms);
+  const pr=S.profile,cw=curWeight(),gdiff=r1(cw-num(pr.goal,cw));const ws=weightsSorted();const lastW=ws.length?ws[ws.length-1]:null;
+  let hint;if(E.kcal===0)hint='還沒吃到身體機能所需的最低營養素';else if(E.kcal<bm)hint='還沒吃到基礎代謝 '+fmt(bm)+' kcal，記得吃飽';else if(E.kcal<=T.kcal)hint='在目標範圍內，很穩';else if(E.kcal<=td)hint='超過目標，但還是有熱量赤字';else hint='今天超過消耗量了，明天再調整就好';
+  let note;
+  if(!st.ds.length)note='還沒有紀錄。今天記第一餐，Combo 就從今天開始。';
+  else if(st.loggedToday)note=`今天已經記了 ${dayMeals(today).length} 餐，目前 ${st.cur} 天 Combo。`;
+  else if(st.gap===1)note=`昨天有記！今天記一餐，Combo 就能延續到 ${st.cur+1} 天。`;
+  else note=`上一次記是 ${st.gap} 天前。中間停一段是常有的事，今天記一筆就接上。`;
+  const d0=new Date();const y=d0.getFullYear(),m=d0.getMonth(),nd=new Date(y,m+1,0).getDate();let dots='';
+  for(let i=1;i<=nd;i++){const k=y+'-'+pad(m+1)+'-'+pad(i);dots+=`<i class="dot${st.set.has(k)?' l':''}${k===today?' t':''}"></i>`}
+  const cups=num(S.water[today],0),wg=num(pr.waterGoal,8);let cupH='';for(let i=0;i<Math.max(wg,cups);i++)cupH+=`<span class="cup${i<cups?' f':''}">${I.drop}</span>`;
+  const meals=dayMeals(today);
+  const bar=(v,t)=>`<div class="bar"><i class="${v>t*1.02?'over':''}" style="width:${t>0?Math.min(100,v/t*100):0}%"></i></div>`;
+  $('#s-home').innerHTML=`
+  <div class="hdr"><div><div class="date">${md(today)}</div><div class="mut small" style="margin-top:2px">累積成績</div></div><div class="sp"></div>
+   <button class="ibtn" data-go="set" aria-label="設定">${I.gear}</button><button class="ibtn" data-go="hist" aria-label="紀錄">${I.hist}</button></div>
+  ${pr.setup?'':`<div class="card banner" data-go="set" style="cursor:pointer"><div class="b">先設定你的身體資料</div><div class="mut small" style="margin-top:4px;line-height:1.5">目前用預設值計算 TDEE。點這裡改成你的性別、年齡、身高、體重與目標。</div></div>`}
+  <div class="pill">${def>=0?'累積赤字':'累積盈餘'}</div>
+  <div class="hero"><span class="big num">${fmt(abs)}</span><span class="unit">kcal</span>
+   <svg class="shard" viewBox="0 0 150 140"><defs><linearGradient id="sh" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd27a"/><stop offset=".35" stop-color="#ff8a2a"/><stop offset="1" stop-color="#c2410c" stop-opacity=".2"/></linearGradient></defs><path d="M40 6 L148 52 L118 136 L80 64 Z" fill="none" stroke="rgba(255,255,255,.12)"/><path d="M62 48 L148 52 L118 136 Z" fill="url(#sh)" style="filter:drop-shadow(0 0 14px rgba(255,138,42,.7))"/></svg></div>
+  ${def>=0?`<div class="pill acp num">${I.bolt}離下一個里程碑還差 ${fmt(toNext)} kcal</div>`:`<div class="pill num">比消耗多吃了 ${fmt(abs)} kcal，慢慢調整就好</div>`}
+  <div class="acts">
+   <button class="abtn" id="b-ate">${I.edit}我吃完了</button>
+   <button class="abtn plus" id="b-plus" aria-label="快速新增">${I.plus}</button>
+   <button class="abtn ghost" id="b-rec">${I.cards}我不知道吃什麼</button>
+  </div>
+  <div class="sech"><h3>今天</h3><span class="r num">吃了 ${fmt(E.kcal)} / ${fmt(T.kcal)} kcal</span></div>
+  <div class="card"><div class="today">
+   ${ring(E.kcal,T.kcal,118,11,`<b class="num" style="font-size:26px">${fmt(E.kcal)}</b><span class="xs mut num">吃了 / ${fmt(T.kcal)}</span>`)}
+   <div class="sp"><div class="rem num" style="${rem<0?'color:var(--bad)':''}">${fmt(Math.abs(rem))}</div><div class="mut small" style="margin-top:3px">${rem>=0?'還能吃 kcal':'超過目標 kcal'}</div>
+    <div class="kv"><span>目標刻度</span><b class="num">${fmt(T.kcal)} kcal</b></div>
+    <div class="kv"><span>每日消耗 TDEE</span><b class="num">${fmt(td)} kcal</b></div>
+    <div class="xs mut3" style="margin-top:7px;line-height:1.45">${hint}</div></div></div></div>
+  <div class="macros">
+   <div class="card macro"><div class="l">碳水</div><div class="v num">${Math.round(E.c)} / ${T.c} g</div>${bar(E.c,T.c)}</div>
+   <div class="card macro"><div class="l">蛋白</div><div class="v num">${Math.round(E.p)} / ${T.p} g</div>${bar(E.p,T.p)}</div>
+   <div class="card macro"><div class="l">脂肪</div><div class="v num">${Math.round(E.f)} / ${T.f} g</div>${bar(E.f,T.f)}</div>
+  </div>
+  <div class="card" id="water" style="cursor:pointer"><div class="row"><div class="sp"><div class="mut small">喝水 · 點一下加一杯 (250ml)</div><div class="goalv num" style="color:#7dbcff">${cups} / ${wg} 杯 <span class="small mut">${cups*250} ml</span></div></div>
+   <button class="ibtn" id="w-minus" aria-label="減一杯" style="width:36px;height:36px">${I.minus}</button><button class="ibtn" aria-label="加一杯" style="width:36px;height:36px;color:#7dbcff">${I.plus}</button></div>
+   <div class="cups">${cupH}</div></div>
+  <div class="card" data-go="hist" style="cursor:pointer"><div class="row"><div class="sp"><div class="mut small">目標</div>
+   <div class="goalv num">${gdiff>0?`距目標還有 ${gdiff.toFixed(1)} 公斤`:gdiff<0?`距目標還差 ${Math.abs(gdiff).toFixed(1)} 公斤（增重）`:'已達成目標體重'}</div></div>
+   <div style="text-align:right"><div class="mut3">${I.next}</div><div class="small mut num">${lastW?`${lastW.date.slice(5).replace('-','/')} 量 ${num(lastW.kg).toFixed(1)} kg`:'還沒量過'}</div></div></div></div>
+  <div class="note">${note}</div>
+  <div class="mut3 small" style="margin:0 2px 8px">這個月 · ${st.cur} 天 Combo · 最長 ${st.best} 天</div>
+  <div class="card"><div class="dots">${dots}</div><div class="legend"><span><i class="dot t"></i>今天</span><span><i class="dot l"></i>有記錄</span><span><i class="dot"></i>沒記錄</span></div></div>
+  <div class="sech" style="margin-top:14px"><h3>今天吃了</h3><span class="r num">今日累積消費 $${fmt(E.price)}</span></div>
+  <div class="card" style="padding:6px 16px">${meals.length?meals.map(mealRow).join(''):'<div class="empty">還沒有紀錄</div>'}</div>
+  <div class="foot">營養數值為估算，實際依店家與份量而異<br>資料只存在這台裝置（可在設定匯出備份）</div>`;
+  $('#b-ate').onclick=()=>go('log');$('#b-rec').onclick=()=>go('rec');$('#b-plus').onclick=openQuick;
+  const addW=n=>{const v=Math.max(0,num(S.water[today],0)+n);S.water[today]=v;save();R.home();};
+  $('#water').onclick=e=>{if(e.target.closest('#w-minus')){addW(-1);return}addW(1)};
+  bindMealDel($('#s-home'),R.home);
+};
+function mealRow(m){const nm=(m.items||[]).map(x=>x.name+((x.q||1)!==1?' ×'+x.q:'')).join('、');const st=[...new Set((m.items||[]).map(x=>x.store).filter(Boolean))].join('/');
+  return `<div class="meal"><span class="tag">${esc(m.label||'')}</span><div class="sp"><div class="nm">${esc(nm)}</div><div class="sb num">${esc(m.time)}${st?' · '+esc(st):''} · ${fmt(num(m.kcal))} kcal · P${Math.round(num(m.p))} C${Math.round(num(m.c))} F${Math.round(num(m.f))} · $${fmt(num(m.price))}</div></div><button class="ibtn" data-del="${esc(m.id)}" aria-label="刪除" style="width:36px;height:36px;color:var(--tx3)">${I.trash}</button></div>`}
+function bindMealDel(root,re){root.querySelectorAll('[data-del]').forEach(b=>b.onclick=e=>{e.stopPropagation();const m=S.meals.find(x=>x.id===b.dataset.del);if(!m)return;if(!confirm('刪除這一餐？\n'+(m.items||[]).map(x=>x.name).join('、')))return;S.meals=S.meals.filter(x=>x.id!==m.id);save();toast('已刪除');re()})}
+
+/* ---------- PICKER (我吃完了 / 自己配) ---------- */
+let tray=[];// {f,q}
+const pick={q:'',store:'全部'};
+function storeChips(sel,attr){return ['全部',...STORES,...(S.custom.length?['我的']:[])].map(s=>`<button class="chip${sel===s?' on':''}" ${attr}="${esc(s)}">${esc(s)}</button>`).join('')}
+function pickerHTML(){
+  return `<div class="search">${I.search}<input type="search" placeholder="搜尋食物，例如 雞胸、蛋餅、便當" value="${esc(pick.q)}" data-q enterkeyhint="search"></div><div class="chips">${storeChips(pick.store,'data-st')}</div><div class="card fl" data-list></div><div class="foot">營養數值為估算 · 找不到？回首頁按「+」自己輸入</div><div style="height:130px"></div>`}
+function renderList(root){
+  if(!root)return;const q=pick.q.trim().toLowerCase();
+  const list=allFoods().filter(f=>(pick.store==='全部'||f.store===pick.store)&&(!q||(f.name+' '+f.store).toLowerCase().includes(q)));
+  const el=root.querySelector('[data-list]');
+  if(!list.length){el.innerHTML='<div class="empty">找不到符合的食物</div>';return}
+  el.innerHTML=list.map(f=>{const t=tray.find(x=>x.f.id===f.id);return `<div class="fi" data-add="${esc(f.id)}"><div class="sp"><div class="nm">${esc(f.name)}</div><div class="sb num">${esc(f.store)} · ${f.kcal} kcal · P${f.p} C${f.c} F${f.f}</div></div><div class="pr num">$${f.price}</div><button class="addb" aria-label="加入">${I.plus}${t?`<span class="q">${t.q}</span>`:''}</button></div>`}).join('');
+}
+function bindPicker(root){
+  const inp=root.querySelector('[data-q]');inp.oninput=()=>{pick.q=inp.value;renderList(root)};
+  root.querySelectorAll('[data-st]').forEach(b=>b.onclick=()=>{pick.store=b.dataset.st;root.querySelectorAll('[data-st]').forEach(x=>x.classList.toggle('on',x===b));renderList(root)});
+  root.querySelector('[data-list]').onclick=e=>{const r=e.target.closest('[data-add]');if(!r)return;const f=allFoods().find(x=>x.id===r.dataset.add);if(!f)return;const t=tray.find(x=>x.f.id===f.id);if(t)t.q++;else tray.push({f,q:1});renderList(root);updTray()};
+  renderList(root);
+}
+function updTray(){
+  const el=$('#tray');const show=(cur==='log'||(cur==='rec'&&recTab==='self'))&&tray.length>0;
+  el.classList.toggle('on',show);el.classList.toggle('up',cur==='rec');if(!show){el.innerHTML='';return}
+  const t=sumItems(tray.map(x=>Object.assign({},x.f,{q:x.q})));
+  el.innerHTML=`<div class="row" style="margin-bottom:10px"><div class="sp"><div class="b small">這一餐 · ${tray.reduce((a,x)=>a+x.q,0)} 樣</div><div class="xs mut" style="margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(tray.map(x=>x.f.name+(x.q>1?'×'+x.q:'')).join('、'))}</div></div><div style="text-align:right"><div class="bb num" style="font-size:20px">${fmt(t.kcal)} <span class="xs mut">kcal</span></div><div class="xs mut num">P${Math.round(t.p)} · $${fmt(t.price)}</div></div></div>
+  <div class="row"><button class="btn sec sm" id="tr-clr">清空</button><button class="btn" id="tr-ok" style="height:44px;font-size:15px">${I.check}確認這一餐</button></div>`;
+  $('#tr-clr').onclick=()=>{tray=[];updTray();refreshPickers()};
+  $('#tr-ok').onclick=()=>openConfirm(tray.map(x=>({f:x.f,q:x.q})),true);
+}
+function refreshPickers(){document.querySelectorAll('.screen.on .pickroot').forEach(renderList)}
+R.log=function(){pick.q="";$('#s-log').innerHTML=topbar()+`<h2 class="pt">我吃完了，吃了什麼？</h2><div class="mut small" style="margin:-6px 2px 12px">點食物加入這一餐，可重複點增加份數</div><div class="pickroot">${pickerHTML()}</div>`;bindPicker($('#s-log .pickroot'))};
+
+/* ---------- RECOMMEND (rule-based) ---------- */
+let recTab='ai';
+const rec={mode:'multi',store:'全部',budget:'',kcal:null,combos:[]};
+function defMealKcal(){const rem=target()-dayTot(dk()).kcal;const d=new Date(),t=d.getHours()*60+d.getMinutes();const left=t<630?3:t<840?2.4:t<1080?1.6:1;
+  return Math.max(250,Math.min(1200,Math.round(Math.max(rem,300)/left/50)*50))}
+function genCombos(){
+  const kT=Math.max(150,num(rec.kcal,defMealKcal())),bud=num(rec.budget,0);
+  const T=macroT(),E=dayTot(dk());const remK=Math.max(T.kcal-E.kcal,kT),remP=Math.max(T.p-E.p,0);
+  const pT=Math.max(15,Math.min(60,Math.round(remP*kT/remK)));
+  const pool=allFoods().filter(f=>(rec.store==='全部'||f.store===rec.store)&&(!bud||f.price<=bud)&&f.kcal<=kT*1.15);
+  const by={};pool.forEach(f=>(by[f.store]=by[f.store]||[]).push(f));const sts=Object.keys(by);
+  const res=new Map();
+  if(sts.length)for(let i=0;i<1500;i++){
+    const st=rnd(sts),list=by[st];let items;
+    if(rec.mode==='single'){const mains=list.filter(f=>f.cat==='main'||f.kcal>=250);if(!mains.length)continue;items=[rnd(mains)]}
+    else{const bases=list.filter(f=>f.cat==='main'||f.cat==='protein');if(!bases.length)continue;items=[rnd(bases)];const n=Math.random()<.55?2:3;let g=0;
+      while(items.length<n&&g++<14){const x=rnd(list);if(items.includes(x))continue;if(x.cat==='drink'&&items.some(y=>y.cat==='drink'))continue;if(x.cat==='main'&&items.some(y=>y.cat==='main'))continue;if(items.some(y=>y.name===x.name))continue;items.push(x)}
+      if(items.length<2)continue}
+    const t=sumItems(items);if(t.kcal>kT*1.1||t.kcal<kT*0.35)continue;if(bud&&t.price>bud)continue;
+    const key=st+'|'+items.map(x=>x.id).sort().join(',');if(res.has(key))continue;
+    const fit=Math.abs(t.kcal-kT*0.95)/kT,pp=Math.max(0,pT-t.p)/pT;
+    res.set(key,{store:st,items,t,score:fit+pp*0.9+Math.random()*0.3});
+  }
+  const all=[...res.values()].sort((a,b)=>a.score-b.score);const out=[],cnt={};
+  for(const c of all){if(rec.store==='全部'&&(cnt[c.store]||0)>=1)continue;cnt[c.store]=1;out.push(c);if(out.length>=5)break}
+  if(out.length<5)for(const c of all){if(!out.includes(c)){out.push(c);if(out.length>=5)break}}
+  rec.combos=out;rec.pT=pT;rec.kT=kT;
+}
+R.rec=function(){
+  if(rec.kcal==null)rec.kcal=defMealKcal();
+  const el=$('#s-rec');
+  el.innerHTML=topbar()+`<div id="rec-body"></div><div style="height:90px"></div><div class="bottombar"><div class="seg" id="rec-tab"><button data-t="ai" class="${recTab==='ai'?'on':''}">AI 搭配</button><button data-t="self" class="${recTab==='self'?'on':''}">自己配</button></div></div>`;
+  el.querySelectorAll('#rec-tab button').forEach(b=>b.onclick=()=>{recTab=b.dataset.t;el.querySelectorAll('#rec-tab button').forEach(x=>x.classList.toggle('on',x===b));renderRecBody();window.scrollTo(0,0)});
+  renderRecBody();
+};
+function renderRecBody(){
+  const b=$('#rec-body');
+  if(recTab==='self'){b.innerHTML=`<h2 class="pt">自己配</h2><div class="pickroot">${pickerHTML()}</div>`;bindPicker(b.querySelector('.pickroot'));updTray();return}
+  updTray();
+  b.innerHTML=`<h2 class="pt">我不知道吃什麼</h2>
+  <div class="card"><div class="ctrl"><label><span class="lbl">這餐熱量上限 kcal</span><input type="number" inputmode="numeric" id="rk" value="${esc(rec.kcal)}"></label><label><span class="lbl">預算 NT$（空白＝不限）</span><input type="number" inputmode="numeric" id="rb" placeholder="不限" value="${esc(rec.budget)}"></label></div>
+  <div class="row" style="margin-top:12px"><div class="seg" id="rmode"><button data-m="single" class="${rec.mode==='single'?'on':''}">單一主食</button><button data-m="multi" class="${rec.mode==='multi'?'on':''}">多樣搭配</button></div><div class="sp"></div><button class="btn sec sm" id="rshuf">${I.shuffle}換一批</button></div></div>
+  <div class="chips">${storeChips(rec.store,'data-rs')}</div><div id="combos"></div><div class="foot">依剩餘熱量與蛋白質目標自動搭配（本機規則運算，不連網）<br>營養數值為估算</div>`;
+  const regen=()=>{genCombos();renderCombos()};
+  $('#rk').onchange=()=>{rec.kcal=Math.max(100,num($('#rk').value,defMealKcal()));$('#rk').value=rec.kcal;regen()};
+  $('#rb').onchange=()=>{rec.budget=$('#rb').value===''?'':Math.max(0,num($('#rb').value,0));regen()};
+  b.querySelectorAll('#rmode button').forEach(x=>x.onclick=()=>{rec.mode=x.dataset.m;b.querySelectorAll('#rmode button').forEach(y=>y.classList.toggle('on',y===x));regen()});
+  b.querySelectorAll('[data-rs]').forEach(x=>x.onclick=()=>{rec.store=x.dataset.rs;b.querySelectorAll('[data-rs]').forEach(y=>y.classList.toggle('on',y===x));regen()});
+  $('#rshuf').onclick=regen;
+  regen();
+}
+function renderCombos(){
+  const el=$('#combos');const T=macroT(),E=dayTot(dk());
+  const head=`<div class="mut small" style="margin:0 2px 10px;line-height:1.5">今天還剩 <b class="ac num">${fmt(T.kcal-E.kcal)}</b> kcal · 這餐目標 ${fmt(rec.kT)} kcal、蛋白質約 ${rec.pT} g</div>`;
+  if(!rec.combos.length){el.innerHTML=head+'<div class="card empty">找不到符合條件的組合，試著提高熱量上限或預算、或換一家店</div>';return}
+  el.innerHTML=head+rec.combos.map((c,i)=>`<div class="card combo${i===0?' best':''}" data-ci="${i}"><div class="row"><div><div class="st">${esc(c.store)}</div><div class="xs mut num">${c.items.length} 樣${i===0?' · 最推薦':''}</div></div><div class="price num">$${fmt(c.t.price)}</div></div>
+   <div class="its">${c.items.map(x=>`<div>${esc(x.name)} <span class="mut3 small num">${x.kcal} kcal</span></div>`).join('')}</div>
+   <div class="stats num"><span><b>${fmt(c.t.kcal)}</b>kcal</span><span><b>${Math.round(c.t.p)}</b>g 蛋白</span><span><b>${Math.round(c.t.c)}</b>g 碳水</span><span><b>${Math.round(c.t.f)}</b>g 脂肪</span></div>
+   <div class="fit"><i style="width:${Math.round(Math.min(1,c.t.kcal/rec.kT)*100)}%"></i></div></div>`).join('');
+  el.querySelectorAll('[data-ci]').forEach(x=>x.onclick=()=>{const c=rec.combos[+x.dataset.ci];openConfirm(c.items.map(f=>({f,q:1})),false)});
+}
+
+/* ---------- CONFIRM SHEET ---------- */
+let pending=[],pendingFromTray=false;
+function openSheet(html,bottom){const s=$('#sheet');s.className='sheet'+(bottom?' bot':'');s.innerHTML=html;$('#mask').classList.add('on');s.offsetHeight;s.classList.add('on')}
+function closeSheet(){$('#sheet').classList.remove('on');$('#mask').classList.remove('on')}
+function openConfirm(items,fromTray){pending=items;pendingFromTray=fromTray;renderConfirm()}
+function renderConfirm(){
+  if(!pending.length){closeSheet();return}
+  const T=macroT(),E=dayTot(dk());const m=sumItems(pending.map(x=>Object.assign({},x.f,{q:x.q})));
+  const after={kcal:E.kcal+m.kcal,p:E.p+m.p,c:E.c+m.c,f:E.f+m.f};const left=Math.round(T.kcal-after.kcal);
+  const stores=[...new Set(pending.map(x=>x.f.store).filter(Boolean))].join(' / ');
+  const s=$('#sheet');const wasOpen=s.classList.contains('on');
+  const html=`<div class="row"><div class="mut small">這一餐 · ${esc(stores)}</div><div class="sp"></div><div class="num" style="white-space:nowrap"><b style="font-size:26px">${fmt(m.kcal)}</b> <span class="small mut">kcal · $${fmt(m.price)}</span></div></div>
+  <div class="row" style="margin-top:12px;justify-content:space-between">
+   ${ring(after.kcal,T.kcal,96,7,`<b class="num" style="font-size:20px">${fmt(after.kcal)}</b><span class="xs mut num">/ ${fmt(T.kcal)}</span>`,'熱量')}
+   <div class="ringrow" style="gap:6px">${ring(after.p,T.p,62,5,`<b class="num" style="font-size:12.5px">${Math.round(after.p)}g</b>`,'蛋白質')}${ring(after.c,T.c,62,5,`<b class="num" style="font-size:12.5px">${Math.round(after.c)}g</b>`,'碳水')}${ring(after.f,T.f,62,5,`<b class="num" style="font-size:12.5px">${Math.round(after.f)}g</b>`,'脂肪')}</div></div>
+  <div class="tiny" style="margin-top:8px">環形 = 吃完這餐後今天的累積</div>
+  <div class="pend">${pending.map((x,i)=>`<div class="pi"><div class="b">${esc(x.f.name)}${x.q>1?' ×'+x.q:''}</div><div class="k num">${fmt(x.f.kcal*x.q)} kcal · $${fmt(x.f.price*x.q)}</div><button class="x" data-rm="${i}" aria-label="移除">${I.x}</button></div>`).join('')}</div>
+  <button class="btn" id="cf-ok">${I.check}決定好了！· ${left>=0?'還剩 '+fmt(left)+' 大卡':'超過 '+fmt(-left)+' 大卡'}</button>
+  <button class="btn sec" id="cf-no" style="margin-top:8px;height:44px">再想想</button>`;
+  if(wasOpen&&!s.classList.contains('bot'))s.innerHTML=html;else openSheet(html,false);
+  s.querySelectorAll('[data-rm]').forEach(b=>b.onclick=()=>{pending.splice(+b.dataset.rm,1);if(pendingFromTray){tray=pending.map(x=>({f:x.f,q:x.q}));updTray();refreshPickers()}renderConfirm()});
+  $('#cf-no').onclick=closeSheet;
+  $('#cf-ok').onclick=()=>{const it=pending.map(x=>Object.assign({},x.f,{q:x.q}));if(pendingFromTray)tray=[];pending=[];logMeal(it)};
+}
+
+/* ---------- LOG + 已更新 ---------- */
+function logMeal(items){
+  const now=new Date(),today=dk(now);const before=streakInfo();const nToday=dayMeals(today).length;
+  const clean=items.map(x=>({name:String(x.name),store:x.store||'',kcal:num(x.kcal),p:num(x.p),c:num(x.c),f:num(x.f),price:num(x.price),q:num(x.q,1)}));
+  const t=sumItems(clean);
+  S.meals.push({id:uid(),date:today,time:pad(now.getHours())+':'+pad(now.getMinutes()),label:mealLabel(now.getHours(),now.getMinutes()),items:clean,kcal:Math.round(t.kcal),p:r1(t.p),c:r1(t.c),f:r1(t.f),price:Math.round(t.price)});
+  save();
+  let msg;
+  if(!before.ds.length)msg='第一筆紀錄完成！Combo 從今天開始算。';
+  else if(before.loggedToday)msg=`今天第 ${nToday+1} 餐，記得很勤快。`;
+  else if(before.gap===1)msg=`連續記錄接上了，Combo 變成 ${before.cur+1} 天。`;
+  else msg=`上一次記是 ${before.gap} 天前。中間停一段是常有的事，今天記一筆就接上。`;
+  go('done',msg);
+}
+R.done=function(msg){
+  const today=dk(),T=macroT(),E=dayTot(today),st=streakInfo();
+  let seg='';for(let i=13;i>=0;i--){const k=addDays(today,-i);seg+=`<i class="${k===today?'t':st.set.has(k)?'l':''}"></i>`}
+  const sub=st.cur===1?(st.best>1?`新的一輪從今天開始，你的最長紀錄 ${st.best} 天`:'新的一輪從今天開始'):`已經連續 ${st.cur} 天，最長紀錄 ${st.best} 天`;
+  $('#s-done').innerHTML=`<div class="okc"><div class="h"><span class="ck">${I.check}</span>已更新</div><p><span class="ac">${I.fork}</span> ${esc(msg||'')}</p></div>
+  <div class="card" style="text-align:center;padding-top:22px">
+   ${ring(E.kcal,T.kcal,150,13,`<b class="num" style="font-size:36px">${fmt(E.kcal)}</b><span class="xs mut num">大卡 / ${fmt(T.kcal)}</span>`,'熱量')}
+   <div class="ringrow" style="margin-top:14px">${ring(E.p,T.p,74,7,`<b class="num" style="font-size:13px">${Math.round(E.p)}g</b>`,'蛋白質')}${ring(E.c,T.c,74,7,`<b class="num" style="font-size:13px">${Math.round(E.c)}g</b>`,'碳水')}${ring(E.f,T.f,74,7,`<b class="num" style="font-size:13px">${Math.round(E.f)}g</b>`,'脂肪')}</div>
+   <div class="hr" style="margin-top:18px"></div><div class="row"><span class="mut small">今日累積消費</span><div class="sp"></div><b class="num" style="font-size:20px">$${fmt(E.price)}</b></div></div>
+  <div class="card"><div class="seg-c">${seg}</div><div class="row" style="align-items:baseline;gap:0"><span class="streakn num">${st.cur}</span><b style="font-size:18px;margin-left:10px">天 Combo</b></div><div class="mut small" style="margin-top:8px">${sub}</div></div>
+  <div style="height:90px"></div>
+  <div class="bottombar"><button class="btn" data-go="home" style="max-width:488px;height:56px;font-size:17px">${I.check}OK，下一餐</button></div>`;
+};
+
+/* ---------- QUICK ADD (+) ---------- */
+function openQuick(){
+  openSheet(`<div class="row" style="margin-bottom:12px"><b style="font-size:18px">快速新增</b><div class="sp"></div><button class="ibtn" id="q-x" style="width:36px;height:36px">${I.x}</button></div>
+  <div class="form">
+   <label class="full"><span class="lbl">名稱</span><input id="q-n" placeholder="例如 媽媽煮的雞湯"></label>
+   <label><span class="lbl">熱量 kcal</span><input id="q-k" type="number" inputmode="decimal" placeholder="0"></label>
+   <label><span class="lbl">價格 NT$</span><input id="q-pr" type="number" inputmode="decimal" placeholder="0"></label>
+   <label><span class="lbl">蛋白質 g</span><input id="q-p" type="number" inputmode="decimal" placeholder="0"></label>
+   <label><span class="lbl">碳水 g</span><input id="q-c" type="number" inputmode="decimal" placeholder="0"></label>
+   <label><span class="lbl">脂肪 g</span><input id="q-f" type="number" inputmode="decimal" placeholder="0"></label>
+   <label><span class="lbl">店家（選填）</span><input id="q-s" placeholder="自己煮"></label>
+   <label class="full row" style="gap:8px;font-size:14px"><input id="q-save" type="checkbox" style="width:20px;height:20px;padding:0;-webkit-appearance:checkbox;appearance:auto;flex:0 0 auto">存到「我的」食物清單，下次可直接選</label>
+  </div>
+  <div class="tiny" style="margin:8px 2px 12px">只填熱量也可以；沒填熱量但有 P/C/F 時，會用 4/4/9 自動換算。</div>
+  <button class="btn" id="q-ok">${I.check}記下這一餐</button>`,true);
+  $('#q-x').onclick=closeSheet;
+  $('#q-ok').onclick=()=>{
+    const name=$('#q-n').value.trim()||'自訂餐點';let k=num($('#q-k').value);const p=num($('#q-p').value),c=num($('#q-c').value),f=num($('#q-f').value);
+    if(!k&&(p||c||f))k=Math.round(p*4+c*4+f*9);
+    if(!(k>0)){toast('請輸入熱量或營養素');return}
+    const item={name,store:$('#q-s').value.trim(),kcal:k,p,c,f,price:num($('#q-pr').value),q:1};
+    if($('#q-save').checked){S.custom.push({id:'c'+uid(),name,kcal:k,p,c,f,price:item.price,cat:'main'});save()}
+    closeSheet();logMeal([item]);
+  };
+}
+
+/* ---------- HISTORY ---------- */
+let histDay=null;
+R.hist=function(){
+  const today=dk();if(!histDay||histDay>today)histDay=today;const T=macroT(),td=tdee();
+  const days=[];for(let i=6;i>=0;i--)days.push(addDays(today,-i));
+  const vals=days.map(d=>Math.round(dayTot(d).kcal));const mx=Math.max(T.kcal*1.25,td,...vals,500);
+  const W=340,H=170,bw=30,gap=(W-30-bw*7)/6,base=H-24,sy=v=>base-(v/mx)*(base-14);
+  let bars='';days.forEach((d,i)=>{const x=24+i*(bw+gap),v=vals[i],y=sy(v);const col=v===0?'rgba(255,255,255,.08)':v>T.kcal*1.02?'#ff5a4f':'url(#bg)';
+    bars+=`<rect x="${x.toFixed(1)}" y="${(v?y:base-3).toFixed(1)}" width="${bw}" height="${(v?base-y:3).toFixed(1)}" rx="6" fill="${col}" ${d===histDay?'stroke="#fff" stroke-width="1.5"':''} data-hd="${d}" style="cursor:pointer"/><text x="${(x+bw/2).toFixed(1)}" y="${H-8}" text-anchor="middle" ${d===today?'style="fill:#ff9152"':''}>${WK[pk(d).getDay()]}</text>${v?`<text x="${(x+bw/2).toFixed(1)}" y="${(y-4).toFixed(1)}" text-anchor="middle" style="fill:#a8a097;font-size:9px">${v}</text>`:''}`});
+  const ty=sy(T.kcal).toFixed(1);
+  const chart=`<svg class="chart" viewBox="0 0 ${W} ${H}"><line x1="20" x2="${W}" y1="${ty}" y2="${ty}" stroke="#f26b2a" stroke-dasharray="4 4" stroke-opacity=".7"/><text x="${W}" y="${ty-4}" text-anchor="end" style="fill:#f26b2a">目標 ${T.kcal}</text>${bars}</svg>`;
+  const avg=vals.filter(v=>v>0);const avgv=avg.length?Math.round(avg.reduce((a,b)=>a+b,0)/avg.length):0;
+  const dm=dayMeals(histDay),dt=dayTot(histDay);
+  const ws=weightsSorted().slice(-30);let wchart='<div class="empty">還沒有體重紀錄</div>';
+  if(ws.length){const goal=num(S.profile.goal,ws[0].kg);const ks=ws.map(w=>num(w.kg)).concat([goal]);const lo=Math.min(...ks)-1,hi=Math.max(...ks)+1;const WH=150,sx=i=>ws.length===1?W/2:24+i*((W-48)/(ws.length-1)),syw=v=>12+(hi-v)/(hi-lo)*(WH-36);
+    const pts=ws.map((w,i)=>sx(i).toFixed(1)+','+syw(w.kg).toFixed(1)).join(' ');const gy=syw(goal).toFixed(1);const L=ws[ws.length-1];
+    wchart=`<svg class="chart" viewBox="0 0 ${W} ${WH}"><line x1="20" x2="${W}" y1="${gy}" y2="${gy}" stroke="#5fc48a" stroke-dasharray="4 4" stroke-opacity=".7"/><text x="${W}" y="${gy-4}" text-anchor="end" style="fill:#5fc48a">目標 ${goal.toFixed(1)}</text><polyline points="${pts}" fill="none" stroke="#ff9152" stroke-width="2.5" stroke-linejoin="round"/>${ws.map((w,i)=>`<circle cx="${sx(i).toFixed(1)}" cy="${syw(w.kg).toFixed(1)}" r="3.5" fill="#ff9152"/>`).join('')}<text x="${sx(0).toFixed(1)}" y="${WH-6}" text-anchor="${ws.length===1?'middle':'start'}">${ws[0].date.slice(5).replace('-','/')}</text>${ws.length>1?`<text x="${sx(ws.length-1).toFixed(1)}" y="${WH-6}" text-anchor="end">${L.date.slice(5).replace('-','/')}</text>`:''}<text x="${sx(ws.length-1).toFixed(1)}" y="${(syw(L.kg)-9).toFixed(1)}" text-anchor="${ws.length===1?'middle':'end'}" style="fill:#f5f0ea;font-size:11px;font-weight:700">${num(L.kg).toFixed(1)}</text></svg>`}
+  const wlist=weightsSorted().slice(-6).reverse().map(w=>`<div class="meal"><div class="sp num"><b>${num(w.kg).toFixed(1)} kg</b> <span class="mut small">${md(w.date)}</span></div><button class="ibtn" data-wdel="${esc(w.date)}" aria-label="刪除" style="width:34px;height:34px;color:var(--tx3)">${I.trash}</button></div>`).join('');
+  $('#s-hist').innerHTML=topbar()+`<h2 class="pt">紀錄</h2>
+  <div class="card"><div class="row"><b>近 7 天熱量</b><div class="sp"></div><span class="small mut num">有記錄日平均 ${fmt(avgv)} kcal</span></div><div style="margin-top:10px">${chart}</div><div class="tiny">點長條可切換到那一天</div></div>
+  <div class="card"><div class="dnav"><button class="ibtn" id="hd-p" aria-label="前一天" style="width:36px;height:36px">${I.back}</button><div class="d">${md(histDay)}${histDay===today?' · 今天':''}</div><button class="ibtn" id="hd-n" aria-label="後一天" style="width:36px;height:36px;${histDay>=today?'opacity:.3':''}">${I.next}</button></div>
+   <div class="row num" style="justify-content:space-around;margin:12px 0 4px;font-size:13px;text-align:center"><div><b style="font-size:18px">${fmt(dt.kcal)}</b><div class="mut xs">kcal</div></div><div><b style="font-size:18px">${Math.round(dt.p)}</b><div class="mut xs">蛋白 g</div></div><div><b style="font-size:18px">${Math.round(dt.c)}</b><div class="mut xs">碳水 g</div></div><div><b style="font-size:18px">${Math.round(dt.f)}</b><div class="mut xs">脂肪 g</div></div><div><b style="font-size:18px">$${fmt(dt.price)}</b><div class="mut xs">消費</div></div></div>
+   <div class="tiny" style="text-align:center">喝水 ${num(S.water[histDay],0)} 杯</div><div class="hr"></div>
+   <div>${dm.length?dm.map(mealRow).join(''):'<div class="empty">這天沒有紀錄</div>'}</div></div>
+  <div class="card" id="wcard"><div class="row"><b>體重</b><div class="sp"></div><span class="small mut num">目前 ${curWeight().toFixed(1)} kg · 目標 ${num(S.profile.goal).toFixed(1)} kg</span></div>
+   <div class="row" style="margin:12px 0"><input type="date" id="w-d" value="${today}" max="${today}" style="flex:1.3;min-width:0"><input type="number" inputmode="decimal" step="0.1" id="w-k" placeholder="kg" style="flex:1;min-width:0"><button class="btn sm" id="w-add">記錄</button></div>
+   ${wchart}<div style="margin-top:6px">${wlist}</div></div>
+  <div class="foot">營養數值為估算</div>`;
+  const root=$('#s-hist');
+  root.querySelectorAll('[data-hd]').forEach(r=>r.addEventListener('click',()=>{histDay=r.getAttribute('data-hd');R.hist()}));
+  $('#hd-p').onclick=()=>{histDay=addDays(histDay,-1);R.hist()};
+  $('#hd-n').onclick=()=>{if(histDay<today){histDay=addDays(histDay,1);R.hist()}};
+  $('#w-add').onclick=()=>{const kg=num($('#w-k').value);const d=$('#w-d').value||today;if(!(kg>20&&kg<400)){toast('請輸入合理的體重');return}
+    S.weights=S.weights.filter(w=>w.date!==d);S.weights.push({date:d,kg:r1(kg)});save();toast('已記錄體重 '+r1(kg).toFixed(1)+' kg');R.hist()};
+  root.querySelectorAll('[data-wdel]').forEach(b=>b.onclick=()=>{if(!confirm('刪除這筆體重？'))return;S.weights=S.weights.filter(w=>w.date!==b.dataset.wdel);save();R.hist()});
+  bindMealDel(root,R.hist);
+};
+
+/* ---------- SETTINGS ---------- */
+const ACT=[[1.2,'久坐（幾乎不運動）'],[1.375,'輕度（每週運動 1–3 天）'],[1.55,'中度（每週運動 3–5 天）'],[1.725,'高度（每週運動 6–7 天）'],[1.9,'非常高（體力工作＋訓練）']];
+const DEF=[[0,'維持體重（不調整）'],[250,'溫和減脂（每天 -250）'],[500,'標準減脂（每天 -500）'],[750,'積極減脂（每天 -750）'],[-300,'增肌增重（每天 +300）']];
+R.set=function(){
+  const p=S.profile;
+  $('#s-set').innerHTML=topbar()+`<h2 class="pt">設定</h2>
+  <div class="card"><b>身體資料</b><div class="form" style="margin-top:12px">
+   <div class="full"><span class="lbl">性別</span><div class="sw" id="sx"><button data-v="m" class="${p.sex!=='f'?'on':''}">男</button><button data-v="f" class="${p.sex==='f'?'on':''}">女</button></div></div>
+   <label><span class="lbl">年齡</span><input id="p-age" type="number" inputmode="numeric" value="${esc(p.age)}"></label>
+   <label><span class="lbl">身高 cm</span><input id="p-h" type="number" inputmode="decimal" value="${esc(p.height)}"></label>
+   <label><span class="lbl">目前體重 kg</span><input id="p-w" type="number" inputmode="decimal" step="0.1" value="${esc(r1(curWeight()))}"></label>
+   <label><span class="lbl">目標體重 kg</span><input id="p-g" type="number" inputmode="decimal" step="0.1" value="${esc(p.goal)}"></label>
+   <label class="full"><span class="lbl">活動量</span><select id="p-a">${ACT.map(a=>`<option value="${a[0]}" ${num(p.activity)===a[0]?'selected':''}>${a[1]}</option>`).join('')}</select></label>
+   <label class="full"><span class="lbl">每日熱量調整</span><select id="p-d">${DEF.map(a=>`<option value="${a[0]}" ${num(p.deficit)===a[0]?'selected':''}>${a[1]}</option>`).join('')}</select></label>
+   <label><span class="lbl">每日喝水目標（杯）</span><input id="p-wg" type="number" inputmode="numeric" value="${esc(p.waterGoal)}"></label>
+  </div><div class="calc" id="calc" style="margin-top:14px"></div><div id="cwarn"></div>
+  <button class="btn" id="p-save" style="margin-top:14px">${I.check}儲存</button></div>
+  <div class="card"><b>備份</b><div class="mut small" style="margin:6px 0 12px;line-height:1.5">資料只存在這支 iPhone 的瀏覽器裡。清除 Safari 資料或換手機前，請先匯出備份。</div>
+   <div class="row"><button class="btn sec" id="ex" style="height:46px">${I.down}匯出 JSON</button><button class="btn sec" id="im" style="height:46px">${I.up}匯入 JSON</button></div>
+   <input type="file" id="imf" accept="application/json,.json,text/plain" style="display:none">
+   <div id="exbox"></div>
+   <details style="margin-top:12px"><summary class="small mut">或貼上 JSON 文字匯入</summary><textarea id="imt" placeholder='{"v":1, ...}' style="margin-top:8px"></textarea><button class="btn sec sm" id="imt-ok" style="margin-top:8px">從文字匯入</button></details></div>
+  <div class="card"><b>我的食物</b><div style="margin-top:6px">${S.custom.length?S.custom.map(c=>`<div class="meal"><div class="sp"><div class="nm">${esc(c.name)}</div><div class="sb num">${num(c.kcal)} kcal · P${num(c.p)} C${num(c.c)} F${num(c.f)} · $${num(c.price)}</div></div><button class="ibtn" data-cdel="${esc(c.id)}" aria-label="刪除" style="width:34px;height:34px;color:var(--tx3)">${I.trash}</button></div>`).join(''):'<div class="empty">用首頁「+」新增時勾選「存到我的」</div>'}</div></div>
+  <div class="card"><button class="btn danger" id="reset">清除所有資料</button></div>
+  <div class="foot">TDEE = Mifflin-St Jeor 基礎代謝 × 活動係數<br>蛋白質 1.6 g/kg、脂肪 28%、其餘為碳水<br>營養數值為估算，非醫療建議</div>`;
+  let sex=p.sex==='f'?'f':'m';
+  const read=()=>({sex,age:num($('#p-age').value,30),height:num($('#p-h').value,170),weight:num($('#p-w').value,70),goal:num($('#p-g').value,65),activity:num($('#p-a').value,1.375),deficit:num($('#p-d').value,0),waterGoal:Math.max(1,Math.min(30,Math.round(num($('#p-wg').value,8))))});
+  const calc=()=>{const q=read();const b=10*q.weight+6.25*q.height-5*q.age+(q.sex==='f'?-161:5);const t=Math.round(b*q.activity);const fl=q.sex==='f'?1200:1500;const raw=t-q.deficit;const tg=Math.round(Math.max(raw,Math.min(fl,t)));
+    const P=Math.round(1.6*q.weight),F=Math.round(tg*.28/9),C=Math.max(0,Math.round((tg-P*4-F*9)/4));
+    $('#calc').innerHTML=`<div><span class="xs mut">基礎代謝 BMR</span><b class="num">${fmt(b)}</b></div><div><span class="xs mut">每日消耗 TDEE</span><b class="num">${fmt(t)}</b></div><div><span class="xs mut">每日目標</span><b class="num ac">${fmt(tg)}</b></div><div><span class="xs mut">蛋白 / 碳水 / 脂肪</span><b class="num" style="font-size:16px;margin-top:5px">${P} / ${C} / ${F} g</b></div>`;
+    $('#cwarn').innerHTML=raw<fl&&q.deficit>0?`<div class="warn">目標已提高到安全下限 ${fl} kcal（不建議長期低於此熱量）。</div>`:''};
+  $('#s-set').querySelectorAll('#sx button').forEach(b=>b.onclick=()=>{sex=b.dataset.v;$('#s-set').querySelectorAll('#sx button').forEach(x=>x.classList.toggle('on',x===b));calc()});
+  ['p-age','p-h','p-w','p-g','p-a','p-d','p-wg'].forEach(id=>{$('#'+id).oninput=calc;$('#'+id).onchange=calc});calc();
+  $('#p-save').onclick=()=>{const q=read();if(q.age<10||q.age>110||q.height<100||q.height>250||q.weight<25||q.weight>350||q.goal<25||q.goal>350){toast('請確認年齡、身高、體重');return}
+    const oldW=r1(curWeight());Object.assign(S.profile,q,{setup:true});
+    if(r1(q.weight)!==oldW&&S.weights.length){const d=dk();S.weights=S.weights.filter(w=>w.date!==d);S.weights.push({date:d,kg:r1(q.weight)})}
+    rec.kcal=null;save();toast('已儲存');go('home')};
+  $('#ex').onclick=()=>{const txt=JSON.stringify(S);const name='diet-backup-'+dk().replace(/-/g,'')+'.json';
+    try{const blob=new Blob([txt],{type:'application/json'});const u=URL.createObjectURL(blob);const a=document.createElement('a');a.href=u;a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(u);a.remove()},1500)}catch(e){}
+    $('#exbox').innerHTML=`<div class="tiny" style="margin-top:12px;line-height:1.5">若沒有跳出下載（例如從主畫面開啟時），可長按下方文字全選複製，貼到備忘錄保存：</div><textarea readonly style="margin-top:6px">${esc(txt)}</textarea>`;toast('已匯出 '+name)};
+  const doImport=txt=>{let j;try{j=JSON.parse(txt)}catch(e){toast('JSON 格式錯誤');return}if(!j||!j.profile||!Array.isArray(j.meals)){toast('這不是本 App 的備份檔');return}
+    if(!confirm(`匯入會覆蓋目前資料（${j.meals.length} 筆餐點、${(j.weights||[]).length} 筆體重），確定？`))return;S=normalize(j);save();toast('匯入完成');go('home')};
+  $('#im').onclick=()=>$('#imf').click();
+  $('#imf').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>doImport(String(r.result));r.readAsText(f);e.target.value=''};
+  $('#imt-ok').onclick=()=>doImport($('#imt').value);
+  $('#s-set').querySelectorAll('[data-cdel]').forEach(b=>b.onclick=()=>{S.custom=S.custom.filter(c=>c.id!==b.dataset.cdel);save();R.set()});
+  $('#reset').onclick=()=>{if(!confirm('確定清除所有紀錄與設定？此動作無法復原（建議先匯出備份）'))return;S=defState();save();tray=[];toast('已清除');go('home')};
+};
+
+/* ---------- boot ---------- */
+document.body.insertAdjacentHTML('afterbegin','<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="gr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffa067"/><stop offset="1" stop-color="#e5561a"/></linearGradient><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff9152"/><stop offset="1" stop-color="#d9531a"/></linearGradient></defs></svg>');
+$('#mask').onclick=closeSheet;
+let lastDay=dk();
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&(cur==='home'||dk()!==lastDay)){lastDay=dk();go('home')}});
+go('home');
+</script>
+</body>
+</html>
